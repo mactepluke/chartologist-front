@@ -11,11 +11,6 @@ export const routes: Routes = [
     loadComponent: () => import('./backtesting/backtesting-page/backtesting-page.component').then(module => module.BacktestingPageComponent)
   },
   {
-    path: `${environment.app_name}/backtesting`,
-    title: 'Backtesting',
-    loadComponent: () => import('./backtesting/backtesting-page/backtesting-page.component').then(module => module.BacktestingPageComponent)
-  },
-  {
     path: `${environment.app_name}/signals`,
     title: 'Signals',
     loadComponent: () => import('./signals/signals-page/signals-page.component').then(module => module.SignalsPageComponent)

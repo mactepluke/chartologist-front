@@ -87,7 +87,9 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
-      <span [textContent]="environment.app_name | titlecase" id="title"></span>
+
+      <h1 [textContent]="environment.app_name | titlecase" id="title"></h1>
+
       <div>
         <button mat-button>Sign in</button>
         <button color="accent" mat-button>Sign up</button>
