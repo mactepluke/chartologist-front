@@ -11,9 +11,9 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$chartomancer-front-primary: mat.define-palette(mat.$orange-palette, 600);
-$chartomancer-front-accent: mat.define-palette(mat.$blue-gray-palette);
-$chartomancer-front-warn: mat.define-palette(mat.$blue-palette);
+$chartomancer-front-primary: mat.define-palette(mat.$orange-palette, 700);
+$chartomancer-front-accent: mat.define-palette(mat.$blue-gray-palette, 600);
+$chartomancer-front-warn: mat.define-palette(mat.$red-palette, 900);
 
 $chartomancer-front-level: mat.define-typography-level(
   $font-family: Roboto,

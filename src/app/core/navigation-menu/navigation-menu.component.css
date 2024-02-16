@@ -50,4 +50,17 @@ mat-nav-list {
 #title {
   font-size: 36px;
   font-weight: lighter;
+  margin-right: auto;
+}
+
+#titleBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  font-size: 16px;
+  margin-left: 5px;
 }

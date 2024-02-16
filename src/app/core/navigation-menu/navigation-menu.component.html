@@ -9,9 +9,6 @@
       <sycm-app-icon iconName="APP_ICON"></sycm-app-icon>
     </div>
 
-    <mat-toolbar>
-    </mat-toolbar>
-
 
     <mat-nav-list>
       <a [routerLinkActiveOptions]="{exact: true }" [routerLink]=home_page_path mat-list-item routerLinkActive="active">
@@ -80,7 +77,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" id="titleBar">
       @if (isHandset$ | async) {
         <button
           type="button"
@@ -90,7 +87,11 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
-      <span [textContent]="environment.app_name | uppercase" id="title">></span>
+      <span [textContent]="environment.app_name | titlecase" id="title"></span>
+      <div>
+        <button mat-button>Sign in</button>
+        <button color="accent" mat-button>Sign up</button>
+      </div>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

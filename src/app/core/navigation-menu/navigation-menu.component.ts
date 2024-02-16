@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {AsyncPipe, UpperCasePipe} from '@angular/common';
+import {AsyncPipe, TitleCasePipe, UpperCasePipe} from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -29,6 +29,7 @@ import {environment} from "../../../environments/environment";
     RouterLinkActive,
     RouterLink,
     UpperCasePipe,
+    TitleCasePipe,
   ]
 })
 export class NavigationMenuComponent {
