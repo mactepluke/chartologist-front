@@ -1,0 +1,97 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false"
+               class="sidenav"
+               fixedInViewport>
+
+    <div class="icon">
+      <sycm-app-icon iconName="APP_ICON"></sycm-app-icon>
+    </div>
+
+    <mat-toolbar>
+    </mat-toolbar>
+
+
+    <mat-nav-list>
+      <a [routerLinkActiveOptions]="{exact: true }" [routerLink]=home_page_path mat-list-item routerLinkActive="active">
+        <div class="container">
+          <mat-icon>home</mat-icon>
+          <div class="items">HOME</div>
+        </div>
+      </a>
+
+      <a [routerLinkActiveOptions]="{exact: true }" [routerLink]=backtesting_page_path mat-list-item
+         routerLinkActive="active">
+        <div class="container">
+          <mat-icon>bar_chart</mat-icon>
+          <div class="items">BACKTESTING</div>
+        </div>
+      </a>
+
+      <a [routerLinkActiveOptions]="{exact: true }" [routerLink]=signals_page_path mat-list-item
+         routerLinkActive="active">
+        <div class="container">
+          <mat-icon>multiline_chart</mat-icon>
+          <div class="items">SIGNALS</div>
+        </div>
+      </a>
+
+      <a [routerLinkActiveOptions]="{exact: true }" [routerLink]=trading_bot_page_path mat-list-item
+         routerLinkActive="active">
+        <div class="container">
+          <mat-icon>av_timer</mat-icon>
+          <div class="items">TRADING BOT</div>
+        </div>
+
+      </a>
+
+      <a [routerLinkActiveOptions]="{exact: true }" [routerLink]=pricing_page_path mat-list-item
+         routerLinkActive="active">
+        <div class="container">
+          <mat-icon>euro_symbol</mat-icon>
+          <div class="items">PRICING</div>
+        </div>
+      </a>
+
+      <a [routerLinkActiveOptions]="{exact: true }" [routerLink]=disclaimer_page_path mat-list-item
+         routerLinkActive="active">
+        <div class="container">
+          <mat-icon>notification_important</mat-icon>
+          <div class="items">DISCLAIMER</div>
+        </div>
+      </a>
+
+      <a [routerLinkActiveOptions]="{exact: true }" [routerLink]=faq_page_path mat-list-item routerLinkActive="active">
+        <div class="container">
+          <mat-icon>speaker_notes</mat-icon>
+          <div class="items">FAQ</div>
+        </div>
+      </a>
+
+      <a [routerLinkActiveOptions]="{exact: true }" [routerLink]=contact_page_path mat-list-item
+         routerLinkActive="active">
+        <div class="container">
+          <mat-icon>alternate_email</mat-icon>
+          <div class="items">CONTACT</div>
+        </div>
+      </a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      @if (isHandset$ | async) {
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      }
+      <span [textContent]="environment.app_name | uppercase" id="title">></span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
