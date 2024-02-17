@@ -6,36 +6,43 @@
 
 img {
   opacity: 0.5;
+  object-fit: cover;
 }
 
 .app-title {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 4rem;
   font-family: Anta, sans-serif;
 }
 
 h1 {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 2.5rem;
   text-align: center;
+  margin-top: 200px;
 }
 
 .icon {
-  position: absolute;
-  top: 5%;
-  left: 46%;
-  width: 200px;
+  width: 100px;
 }
 
 .buttons {
+  width: 120px;
+}
+
+.overlay {
   position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
