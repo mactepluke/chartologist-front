@@ -35,14 +35,6 @@ import {environment} from "../../environments/environment";
 export class NavigationMenuComponent {
   protected pages = ['home', 'backtesting', 'signals', 'trading-bot', 'pricing', 'disclaimer', 'faq', 'contact'];
   protected selectedPage = this.pages[0];
-  protected home_page_path = `${environment.app_name}`;
-  protected backtesting_page_path = `${environment.app_name}/ + ${this.pages[1]}`;
-  protected signals_page_path = `${environment.app_name}/signals`;
-  protected trading_bot_page_path = `${environment.app_name}/trading-bot`;
-  protected pricing_page_path = `${environment.app_name}/pricing`;
-  protected disclaimer_page_path = `${environment.app_name}/disclaimer`;
-  protected faq_page_path = `${environment.app_name}/faq`;
-  protected contact_page_path = `${environment.app_name}/contact`;
   protected readonly environment = environment;
   private breakpointObserver = inject(BreakpointObserver);
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
