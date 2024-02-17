@@ -1,3 +1,3 @@
 export const environment = {
-  app_name: 'chartomancer',
+  app_name: 'chartologist',
 };

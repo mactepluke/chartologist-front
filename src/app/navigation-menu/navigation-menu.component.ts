@@ -8,9 +8,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
-import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import {AppIconComponent} from "../app-icon/app-icon.component";
-import {environment} from "../../../environments/environment";
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {AppIconComponent} from "../core/app-icon/app-icon.component";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'sycm-navigation-menu',
@@ -33,8 +33,10 @@ import {environment} from "../../../environments/environment";
   ]
 })
 export class NavigationMenuComponent {
+  protected pages = ['home', 'backtesting', 'signals', 'trading-bot', 'pricing', 'disclaimer', 'faq', 'contact'];
+  protected selectedPage = this.pages[0];
   protected home_page_path = `${environment.app_name}`;
-  protected backtesting_page_path = `${environment.app_name}/backtesting`;
+  protected backtesting_page_path = `${environment.app_name}/ + ${this.pages[1]}`;
   protected signals_page_path = `${environment.app_name}/signals`;
   protected trading_bot_page_path = `${environment.app_name}/trading-bot`;
   protected pricing_page_path = `${environment.app_name}/pricing`;
@@ -48,4 +50,13 @@ export class NavigationMenuComponent {
       map(result => result.matches),
       shareReplay()
     );
+
+  constructor(private router: Router) {
+  }
+
+  protected onSelectPage(page: string) {
+    this.selectedPage = page;
+    this.router.navigate([`${environment.app_name}/${page}`]);
+  }
+
 }

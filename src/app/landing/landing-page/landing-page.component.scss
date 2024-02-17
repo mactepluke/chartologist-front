@@ -1,0 +1,41 @@
+.background {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+img {
+  opacity: 0.5;
+}
+
+.app-title {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  font-family: Anta, sans-serif;
+}
+
+h1 {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.icon {
+  position: absolute;
+  top: 5%;
+  left: 46%;
+  width: 200px;
+}
+
+.buttons {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

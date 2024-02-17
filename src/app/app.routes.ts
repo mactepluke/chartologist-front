@@ -6,6 +6,9 @@ export const routes: Routes = [
     path: '', redirectTo: `${environment.app_name}`, pathMatch: 'full'
   },
   {
+    path: `${environment.app_name}/home`, redirectTo: `${environment.app_name}`, pathMatch: 'full'
+  },
+  {
     path: `${environment.app_name}/backtesting`,
     title: 'Backtesting',
     loadComponent: () => import('./backtesting/backtesting-page/backtesting-page.component').then(module => module.BacktestingPageComponent)

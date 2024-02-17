@@ -49,8 +49,9 @@ mat-nav-list {
 }
 
 #title {
-  font-family: "Avenir", serif;
-  font-size: 42px;
+  font-family: "Anta", sans-serif;
+  font-size: 30px;
+  font-weight: lighter;
 }
 
 #titleBar {

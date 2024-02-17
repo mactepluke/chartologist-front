@@ -1,1 +1,6 @@
-<sycm-navigation-menu></sycm-navigation-menu>
+@if (hasLanded) {
+  <sycm-navigation-menu></sycm-navigation-menu>
+} @else {
+  <sycm-landing-page (hasLanded)="setHasLanded($event)"></sycm-landing-page>
+}
+

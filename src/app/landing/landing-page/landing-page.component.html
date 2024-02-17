@@ -1,0 +1,9 @@
+<div class="background">
+  <img alt="The Chartomancer" fill ngSrc="assets/desert_candles.jpg">
+  <div class="icon">
+    <sycm-app-icon iconName="APP_ICON"></sycm-app-icon>
+  </div>
+  <span [textContent]="(environment.app_name | titlecase) + '_'" class="app-title" id="title"></span>
+  <h1>A powerful machine learning tool <br>that deciphers the past to predict the future.</h1>
+  <button (click)="onGetStared()" class="buttons" color="primary" mat-flat-button>Get started</button>
+</div>
