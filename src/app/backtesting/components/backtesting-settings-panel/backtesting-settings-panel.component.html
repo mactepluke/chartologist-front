@@ -55,12 +55,11 @@
     <mat-form-field class="example-full-width">
       <mat-label>Account balance</mat-label>
       <input class="right-align" matInput placeholder="0" type="number">
-      <span matTextPrefix>$&nbsp;</span>
-      <span matTextSuffix>.00</span>
+      <span matTextSuffix>.00 </span>
+      <span matTextSuffix>$&nbsp;</span>
     </mat-form-field>
 
-    <button color="primary" mat-raised-button>Run</button>
+    <button (click)="onRunBacktesting()" color="primary" mat-raised-button>Run</button>
 
-    <p>Selected range: {{ range.value | json }}</p>
   </mat-card-content>
 </mat-card>

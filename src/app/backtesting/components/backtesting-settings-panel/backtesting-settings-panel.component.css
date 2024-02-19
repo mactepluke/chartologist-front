@@ -1,0 +1,29 @@
+.right-align {
+  text-align: right;
+}
+
+input.right-align::-webkit-outer-spin-button,
+input.right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+mat-form-field {
+  margin: 20px 20px 10px 0;
+}
+
+button {
+  width: 100px;
+}
+
+mat-card {
+  margin: 20px 20px 10px 20px;
+}
+
+
+mat-card-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}

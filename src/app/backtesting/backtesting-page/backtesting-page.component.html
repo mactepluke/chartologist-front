@@ -1,2 +1,18 @@
-<sycm-backtesting-settings-panel></sycm-backtesting-settings-panel>
-<sycm-backtesting-results-panel></sycm-backtesting-results-panel>
+<sycm-backtesting-settings-panel
+  (hasLaunchedBackTesting)="launchBackTesting($event)">
+</sycm-backtesting-settings-panel>
+<!--<sycm-backtesting-results-panel></sycm-backtesting-results-panel>-->
+
+<div class="results-block">
+
+  @if (displayResultsBlocks) {
+    @for (content of contents; track content) {
+      <sycm-results-block [content]="content"></sycm-results-block>
+    } @empty {
+      <div>
+        <p>No results to display</p>
+      </div>
+    }
+  }
+
+</div>

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from "@angular/material/card";
 import {MatError, MatFormField, MatHint, MatLabel} from "@angular/material/form-field";
 import {
@@ -56,22 +56,28 @@ interface MenuItems {
 export class BacktestingSettingsPanelComponent {
   minDate = new Date(2023, 8, 27);
   maxDate = new Date(2024, 2, 23);
-
   markets: MenuItems[] = [
     {value: 'cryptocurrency-0', viewValue: 'Cryptocurrency'}
   ];
-
   symbols: MenuItems[] = [
     {value: 'btcusd-0', viewValue: 'BTC/USD'}
   ];
-
   timeFrames: MenuItems[] = [
     {value: 'day-0', viewValue: 'Day'},
     {value: 'fourhour-1', viewValue: '4 Hour'}
   ];
-
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
+  @Output()
+  hasLaunchedBackTesting = new EventEmitter<boolean>();
+
+  onRunBacktesting() {
+    this.hasLaunchedBackTesting.emit(true);
+    console.log('Running backtest...');
+  }
+
 }
+
+

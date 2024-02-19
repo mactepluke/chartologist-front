@@ -1,0 +1,49 @@
+mat-card {
+  width: fit-content;
+  min-width: 300px;
+  min-height: 200px;
+  margin: 10px 10px 10px 10px;
+  padding: 20px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#firstItemName {
+  font-size: 10px;
+  font-weight: lighter;
+  margin-bottom: 10px;
+}
+
+#firstItemValue {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#firstItemContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+#followingItemsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.secondaryItemContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.secondaryItemName {
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+.secondaryItemValue {
+  font-size: 14px;
+  font-weight: bolder;
+}

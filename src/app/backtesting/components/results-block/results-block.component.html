@@ -1,0 +1,18 @@
+<mat-card>
+
+  @if (content.items[0]) {
+    <div id="firstItemContainer">
+      <span [textContent]="content.items[0].name | uppercase" id="firstItemName"></span>
+      <span id="firstItemValue" [textContent]="content.items[0].unit + ' ' + content.items[0].value"></span>
+    </div>
+  }
+
+  @for (item of getFollowingItems(); track item.name) {
+    <mat-divider></mat-divider>
+    <div class="secondaryItemContainer">
+      <span class="secondaryItemName" [textContent]="item.name + ' ' + item.unit"></span>
+      <span class="secondaryItemValue" [textContent]="item.value"></span>
+    </div>
+  }
+
+</mat-card>
