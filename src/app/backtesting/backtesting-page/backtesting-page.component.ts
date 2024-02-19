@@ -36,7 +36,7 @@ export class BacktestingPageComponent {
   }
 
 
-  launchBackTesting($event: boolean) {
+  launchBackTesting() {
 
     this.backtestingResults = {
       accountBalance: 12460,

@@ -71,10 +71,10 @@ export class BacktestingSettingsPanelComponent {
     end: new FormControl<Date | null>(null),
   });
   @Output()
-  hasLaunchedBackTesting = new EventEmitter<boolean>();
+  launchBacktestingEmitter = new EventEmitter();
 
   onRunBacktesting() {
-    this.hasLaunchedBackTesting.emit(true);
+    this.launchBacktestingEmitter.emit();
     console.log('Running backtest...');
   }
 
