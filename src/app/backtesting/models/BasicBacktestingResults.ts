@@ -2,7 +2,6 @@ import {Trade} from "../../core/models/Trade";
 
 export interface BasicBacktestingResults {
   accountBalance: number;
-  initialAccountBalance: number;
   pnl: number;
   returnPercentage: number;
   annualizedReturnPercentage: number;
@@ -13,8 +12,6 @@ export interface BasicBacktestingResults {
   profitFactor: number;
   totalDurationInDays: number;
   actualTradingDurationPercentage: number;
-  riskPercentage: number;
   feePercentage: number;
-  orderRole: 'taker' | 'maker';
   trades: Trade[];
 }

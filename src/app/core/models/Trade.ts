@@ -10,7 +10,7 @@ export interface Trade {
   expiry: Date;
   closeDateTime: Date;
   status: string;
-  side: string;
+  side: 'long' | 'short';
   openPrice: number;
   closePrice: number;
   takeProfit: number;
@@ -19,7 +19,6 @@ export interface Trade {
   takeProfitPricePercentage: number;
   stopLossPricePercentage: number;
   expectedProfit: number;
-  riskPercentage: number;
   rewardToRiskRatio: number;
   pnl: number;
   feePercentage: number;
