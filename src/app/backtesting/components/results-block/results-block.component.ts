@@ -4,6 +4,7 @@ import {MatDivider} from "@angular/material/divider";
 import {UpperCasePipe} from "@angular/common";
 import {ResultsBlockItem} from "../../models/ResultsBlockItem";
 import {ResultsBlockContent} from "../../models/ResultsBlockContent";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'sycm-results-block',
@@ -12,7 +13,8 @@ import {ResultsBlockContent} from "../../models/ResultsBlockContent";
     MatCard,
     MatCardContent,
     MatDivider,
-    UpperCasePipe
+    UpperCasePipe,
+    MatIcon
   ],
   templateUrl: './results-block.component.html',
   styleUrl: './results-block.component.css'

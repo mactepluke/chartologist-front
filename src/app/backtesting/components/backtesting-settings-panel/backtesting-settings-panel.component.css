@@ -27,3 +27,7 @@ mat-card-content {
   justify-content: flex-start;
   align-items: center;
 }
+
+a {
+  color: lightgray;
+}

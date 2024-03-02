@@ -1,14 +1,14 @@
-<mat-card>
+<mat-card [formGroup]="form">
   <mat-card-header>
-    <mat-card-title>Enter simulation settings and Run the analysis</mat-card-title>
-    <mat-card-subtitle>Important note: only a limited assets and timeframes are avalailable for the moment
+    <mat-card-title>Enter your settings and Run the trading simulation</mat-card-title>
+    <mat-card-subtitle>Only a limited assets and timeframes are available at this time, but more will be added soon.
+      The date range is limited to the 26th of August 2023 to the 15th of February 2024 (see FAQ to see why).
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-
     <mat-form-field>
       <mat-label>Markets</mat-label>
-      <mat-select>
+      <mat-select formControlName="market">
         @for (market of markets; track market) {
           <mat-option [value]="market.value">{{ market.viewValue }}</mat-option>
         }
@@ -17,7 +17,7 @@
 
     <mat-form-field>
       <mat-label>Symbols</mat-label>
-      <mat-select>
+      <mat-select formControlName="symbol">
         @for (symbol of symbols; track symbol) {
           <mat-option [value]="symbol.value">{{ symbol.viewValue }}</mat-option>
         }
@@ -26,35 +26,29 @@
 
     <mat-form-field>
       <mat-label>Timeframes</mat-label>
-      <mat-select>
+      <mat-select formControlName="timeframe">
         @for (timeFrame of timeFrames; track timeFrame) {
           <mat-option [value]="timeFrame.value">{{ timeFrame.viewValue }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field formGroupName="range">
       <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-        <input [min]="minDate" formControlName="start" matStartDate
+      <mat-date-range-input [rangePicker]="picker" [min]="minDate" [max]="maxDate">
+        <input formControlName="start" matStartDate
                placeholder="Start date">
-        <input [max]="maxDate" formControlName="end" matEndDate placeholder="End date">
+        <input formControlName="end" matEndDate placeholder="End date">
       </mat-date-range-input>
       <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle [for]="picker" matIconSuffix>
       </mat-datepicker-toggle>
       <mat-date-range-picker #picker [startAt]="minDate"></mat-date-range-picker>
-      @if (range.controls.start.hasError('matStartDateInvalid')) {
-        <mat-error>Invalid start date</mat-error>
-      }
-      @if (range.controls.end.hasError('matEndDateInvalid')) {
-        <mat-error>Invalid end date</mat-error>
-      }
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Account balance</mat-label>
-      <input class="right-align" matInput placeholder="0" type="number">
+      <input class="right-align" matInput placeholder="0" type="number" formControlName="balance">
       <span matTextSuffix>.00 </span>
       <span matTextSuffix>$&nbsp;</span>
     </mat-form-field>

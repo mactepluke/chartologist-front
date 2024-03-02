@@ -14,7 +14,7 @@ export class BacktestingService {
   runBackTesting(symbol: string, timeframe: string, startDate: Date, endDate: Date, accountBalance: number): Observable<BasicBacktestingResults> {
     return this.http.get<BasicBacktestingResults>
     (
-      `${environment.backend_address}/dummytrades/getbasic?` +
+      `${environment.backend_address}/backtesting/get-results?` +
       `symbol=${symbol}` +
       `&timeframe=${timeframe}` +
       `&startDate=${this.datePipe.transform(startDate, 'yyyy-MM-dd')}` +

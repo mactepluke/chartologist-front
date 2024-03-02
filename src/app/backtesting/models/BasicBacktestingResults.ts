@@ -6,7 +6,6 @@ export interface BasicBacktestingResults {
   returnPercentage: number;
   annualizedReturnPercentage: number;
   tradeNumber: number;
-  avgReturnPerTradePercentage: number;
   battingAveragePercentage: number;
   winLossRatio: number;
   profitFactor: number;
@@ -14,4 +13,5 @@ export interface BasicBacktestingResults {
   actualTradingDurationPercentage: number;
   feePercentage: number;
   trades: Trade[];
+
 }

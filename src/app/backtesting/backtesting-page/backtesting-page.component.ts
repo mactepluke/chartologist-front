@@ -11,6 +11,8 @@ import {BasicBacktestingResults} from "../models/BasicBacktestingResults";
 import {ResultsBlockContent} from "../models/ResultsBlockContent";
 import {NgForOf} from "@angular/common";
 import {BacktestingService} from "../services/backtesting.service";
+import {BacktestingSettings} from "../models/BacktestingSettings";
+import {Trade} from "../../core/models/Trade";
 
 @Component({
   selector: 'sycm-backtesting-page',
@@ -27,39 +29,27 @@ import {BacktestingService} from "../services/backtesting.service";
   templateUrl: './backtesting-page.component.html',
   styleUrl: './backtesting-page.component.css'
 })
+
 export class BacktestingPageComponent {
   contents: ResultsBlockContent[] = [];
-  backtestingResults!: BasicBacktestingResults;
   displayResultsBlocks = false;
 
   constructor(private backtestingService: BacktestingService) {
   }
 
 
-  launchBackTesting() {
+  launchBackTesting($settings: BacktestingSettings) {
 
-    this.backtestingResults = {
-      accountBalance: 12460,
-      initialAccountBalance: 10000,
-      trades: [],
-      pnl: 2460,
-      returnPercentage: 61,
-      annualizedReturnPercentage: 167,
-      tradeNumber: 10,
-      avgReturnPerTradePercentage: 12,
-      battingAveragePercentage: 70,
-      winLossRatio: 1.5,
-      profitFactor: 2,
-      totalDurationInDays: 30,
-      actualTradingDurationPercentage: 60,
-      riskPercentage: 2,
-      feePercentage: 0.1,
-      orderRole: 'taker'
-    };
+    this.backtestingService.runBackTesting($settings.symbol, $settings.timeframe, $settings.range.start, $settings.range.end, $settings.balance)
+      .subscribe({
+          next: (results: BasicBacktestingResults) => {
+            this.contents = this.generateResultsBlockContents(results);
+            this.displayResultsBlocks = true;
+          },
+          error: () => console.log('Could not load backtesting results')
+        }
+      );
 
-    this.contents = this.generateResultsBlockContents(this.backtestingResults);
-
-    this.displayResultsBlocks = true;
   }
 
   protected generateResultsBlockContents(ofResults: BasicBacktestingResults): ResultsBlockContent[] {
@@ -67,35 +57,58 @@ export class BacktestingPageComponent {
     let contents: ResultsBlockContent[] = [];
 
     let items: ResultsBlockItem[] = [
-      {name: 'Account Balance', unit: '$', value: ofResults.accountBalance},
-      {name: 'Initial Balance', unit: '$', value: ofResults.trades[0]?.accountBalanceAtOpen || 0},
-      {name: 'PnL', unit: '$', value: ofResults.pnl},
-      {name: 'Return', unit: '%', value: ofResults.returnPercentage},
-      {name: 'Annualized Return', unit: '%', value: ofResults.annualizedReturnPercentage}
+      {name: 'Final Account Balance', unit: '$', value: this.round2(ofResults.accountBalance)},
+      {name: 'Initial Balance', unit: '$', value: this.round2(ofResults.trades[0]?.accountBalanceAtOpen || 0)},
+      {name: 'PnL', unit: '$', value: this.round2(ofResults.pnl)},
+      {name: 'Return', unit: '%', value: this.round2(ofResults.returnPercentage)},
+      {name: 'Annualized Return', unit: '%', value: this.round2(ofResults.annualizedReturnPercentage)}
     ]
 
     contents.push(new ResultsBlockContent(items));
 
     items = [
       {name: 'Trades', unit: '', value: ofResults.tradeNumber},
-      {name: 'Avg. Return per Trade', unit: '%', value: ofResults.avgReturnPerTradePercentage},
-      {name: 'Batting Average', unit: '%', value: ofResults.battingAveragePercentage},
-      {name: 'Win to Loss Ratio', unit: '', value: ofResults.winLossRatio},
-      {name: 'Profit Factor', unit: '', value: ofResults.profitFactor}
+      {name: 'Avg. Return per Trade', unit: '%', value: this.round2(ofResults.pnl/ofResults.tradeNumber)},
+      {name: 'Batting Average', unit: '%', value: this.round2(ofResults.battingAveragePercentage)},
+      {name: 'Win to Loss Ratio', unit: '', value: this.round2(ofResults.winLossRatio)},
+      {name: 'Profit Factor', unit: '', value: this.round2(ofResults.profitFactor)}
     ]
 
     contents.push(new ResultsBlockContent(items));
 
     items = [
-      {name: 'Total Duration in days', unit: '', value: ofResults.totalDurationInDays},
-      {name: 'Actual Trading Duration', unit: '%', value: ofResults.actualTradingDurationPercentage},
-      {name: 'Risk Per Trade', unit: '%', value: ofResults.riskPercentage},
-      {name: 'Fee Percentage', unit: '%', value: ofResults.feePercentage},
-      {name: 'Order Role', unit: '', value: ofResults.orderRole}
+      {name: 'Total Duration in days', unit: '', value: this.round2(ofResults.totalDurationInDays)},
+      {name: 'Actual Trading Duration', unit: '%', value: this.round2(ofResults.actualTradingDurationPercentage)},
+      {name: 'Avg. Size', unit: '(qty)', value: this.calculateAverageTradeSizeRounded(ofResults.trades)},
+      {name: 'Avg. Leverage', unit: '', value: this.calculateAverageTradeLeverageRounded(ofResults.trades)},
+      {name: 'Avg. Trade Duration', unit: '(hours)', value:
+          this.round2(
+            (ofResults.actualTradingDurationPercentage * ofResults.totalDurationInDays * 24) / (ofResults.tradeNumber * 100)
+          )}
     ]
 
     contents.push(new ResultsBlockContent(items));
 
     return contents;
+  }
+
+  private round2(value: number): number {
+    return Number(value.toFixed(2));
+  }
+
+  private calculateAverageTradeSizeRounded(trades: Trade[]): number {
+    let size = 0;
+    trades.forEach((trade: Trade) => {
+      size += trade.size;
+    });
+    return this.round2(size / trades.length);
+  }
+
+  private calculateAverageTradeLeverageRounded(trades: Trade[]): number {
+    let leverage = 0;
+    trades.forEach((trade: Trade) => {
+      leverage += trade.leverage;
+    });
+    return this.round2(leverage / trades.length);
   }
 }
