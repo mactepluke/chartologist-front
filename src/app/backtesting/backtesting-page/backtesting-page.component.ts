@@ -13,6 +13,7 @@ import {NgForOf} from "@angular/common";
 import {BacktestingService} from "../services/backtesting.service";
 import {BacktestingSettings} from "../models/BacktestingSettings";
 import {Trade} from "../../core/models/Trade";
+import {MatProgressBar} from "@angular/material/progress-bar";
 
 @Component({
   selector: 'sycm-backtesting-page',
@@ -21,7 +22,8 @@ import {Trade} from "../../core/models/Trade";
     BacktestingSettingsPanelComponent,
     BacktestingResultsPanelComponent,
     ResultsBlockComponent,
-    NgForOf
+    NgForOf,
+    MatProgressBar
   ],
   providers: [
     BacktestingService
@@ -33,6 +35,7 @@ import {Trade} from "../../core/models/Trade";
 export class BacktestingPageComponent {
   contents: ResultsBlockContent[] = [];
   displayResultsBlocks = false;
+  serverIsBusy = false;
 
   constructor(private backtestingService: BacktestingService) {
   }
@@ -40,10 +43,14 @@ export class BacktestingPageComponent {
 
   launchBackTesting($settings: BacktestingSettings) {
 
+    this.displayResultsBlocks = false;
+    this.serverIsBusy = true;
+
     this.backtestingService.runBackTesting($settings.symbol, $settings.timeframe, $settings.range.start, $settings.range.end, $settings.balance)
       .subscribe({
           next: (results: BasicBacktestingResults) => {
             this.contents = this.generateResultsBlockContents(results);
+            this.serverIsBusy = false;
             this.displayResultsBlocks = true;
           },
           error: () => console.log('Could not load backtesting results')

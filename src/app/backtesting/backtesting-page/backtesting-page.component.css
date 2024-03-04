@@ -5,3 +5,11 @@ div.results-block {
   justify-content: center;
   align-items: center;
 }
+
+#progress-block  {
+  margin-top: 50px;
+}
+
+mat-progress-bar  {
+  margin-top: 20px;
+}

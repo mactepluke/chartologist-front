@@ -5,6 +5,13 @@
 
 <div class="results-block">
 
+  @if (serverIsBusy) {
+    <div id="progress-block">
+      <span>Running backtesting... This may take up to a minute</span>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+  }
+
   @if (displayResultsBlocks) {
     @for (content of contents; track content) {
       <sycm-results-block [content]="content"></sycm-results-block>
