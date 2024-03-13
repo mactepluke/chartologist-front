@@ -29,11 +29,6 @@ export const routes: Routes = [
     loadComponent: () => import('./pricing/pricing-page/pricing-page.component').then(module => module.PricingPageComponent)
   },
   {
-    path: `${environment.app_name}/disclaimer`,
-    title: 'Disclaimer',
-    loadComponent: () => import('./disclaimer/disclaimer-page/disclaimer-page.component').then(module => module.DisclaimerPageComponent)
-  },
-  {
     path: `${environment.app_name}/faq`,
     title: 'Faq',
     loadComponent: () => import('./faq/faq-page/faq-page.component').then(module => module.FaqPageComponent)

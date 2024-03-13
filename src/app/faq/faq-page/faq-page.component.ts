@@ -1,9 +1,16 @@
 import {Component} from '@angular/core';
+import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from "@angular/material/card";
 
 @Component({
   selector: 'sycm-faq-page',
   standalone: true,
-  imports: [],
+    imports: [
+        MatCard,
+        MatCardContent,
+        MatCardHeader,
+        MatCardSubtitle,
+        MatCardTitle
+    ],
   templateUrl: './faq-page.component.html',
   styleUrl: './faq-page.component.css'
 })

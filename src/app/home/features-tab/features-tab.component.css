@@ -9,7 +9,7 @@ img {
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 mat-card  {
@@ -22,4 +22,14 @@ mat-card-content  {
 
 li  {
   margin-bottom: 5px;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.text-container {
+  margin-top: 40px;
+  margin-left: 30px;
+  text-align: center;
 }

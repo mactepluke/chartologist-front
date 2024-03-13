@@ -1,0 +1,8 @@
+a {
+  color: lightgray;
+}
+
+mat-card-content {
+  font-weight: lighter;
+  margin-top: 20px;
+}
