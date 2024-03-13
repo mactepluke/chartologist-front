@@ -11,48 +11,55 @@
 
 
     <mat-nav-list>
-      <a (click)="onSelectPage('home')" mat-list-item>
+      <a (click)="onSelectPage('home'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
           <mat-icon>home</mat-icon>
           <div class="items">HOME</div>
         </div>
       </a>
 
-      <a (click)="onSelectPage('backtesting')" mat-list-item>
+      <a (click)="onSelectPage('login'); handsetState ? drawer.toggle() : ''" mat-list-item>
+        <div class="container">
+          <mat-icon>login</mat-icon>
+          <div class="items">LOGIN</div>
+        </div>
+      </a>
+
+      <a (click)="onSelectPage('backtesting'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
           <mat-icon>bar_chart</mat-icon>
           <div class="items">BACKTESTING</div>
         </div>
       </a>
 
-      <a (click)="onSelectPage('signals')" mat-list-item>
+      <a (click)="onSelectPage('signals'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
           <mat-icon>multiline_chart</mat-icon>
           <div class="items">SIGNALS</div>
         </div>
       </a>
 
-      <a (click)="onSelectPage('trading-bot')" mat-list-item>
+      <a (click)="onSelectPage('trading-bot'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
           <mat-icon>adb</mat-icon>
           <div class="items">TRADING BOT</div>
         </div>
       </a>
 
-      <a (click)="onSelectPage('pricing')" mat-list-item>
+      <a (click)="onSelectPage('pricing'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
           <mat-icon>euro_symbol</mat-icon>
           <div class="items">PRICING</div>
         </div>
       </a>
-      <a (click)="onSelectPage('faq')" mat-list-item>
+      <a (click)="onSelectPage('faq'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
           <mat-icon>speaker_notes</mat-icon>
           <div class="items">FAQ</div>
         </div>
       </a>
 
-      <a (click)="onSelectPage('contact')" mat-list-item>
+      <a (click)="onSelectPage('contact'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
           <mat-icon>alternate_email</mat-icon>
           <div class="items">CONTACT</div>
@@ -73,12 +80,8 @@
         </button>
       }
 
-      <h1 [textContent]="(environment.app_name | titlecase) + '_' + (selectedPage | uppercase)" id="title"></h1>
 
-      <div>
-        <button mat-button>Sign in</button>
-        <button color="accent" mat-button>Sign up</button>
-      </div>
+      <h1 [textContent]="(environment.app_name | titlecase) + '_' + (selectedPage | uppercase)" id="title"></h1>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

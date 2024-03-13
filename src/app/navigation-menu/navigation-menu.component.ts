@@ -1,5 +1,5 @@
-import {Component, inject} from '@angular/core';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {Component, inject, OnInit} from '@angular/core';
+import {BreakpointObserver, Breakpoints, BreakpointState} from '@angular/cdk/layout';
 import {AsyncPipe, TitleCasePipe, UpperCasePipe} from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
@@ -32,8 +32,8 @@ import {environment} from "../../environments/environment";
     TitleCasePipe,
   ]
 })
-export class NavigationMenuComponent {
-  protected pages = ['home', 'backtesting', 'signals', 'trading-bot', 'pricing', 'disclaimer', 'faq', 'contact'];
+export class NavigationMenuComponent implements OnInit {
+  protected pages = ['home', 'backtesting', 'signals', 'trading-bot', 'pricing', 'login', 'faq', 'contact'];
   protected selectedPage = this.pages[0];
   protected readonly environment = environment;
   private breakpointObserver = inject(BreakpointObserver);
@@ -42,13 +42,26 @@ export class NavigationMenuComponent {
       map(result => result.matches),
       shareReplay()
     );
+  protected handsetState!: boolean;
 
   constructor(private router: Router) {
   }
 
+  ngOnInit(): void {
+        this.handsetState = this.isHandset();
+    }
+
   protected onSelectPage(page: string) {
     this.selectedPage = page;
-    this.router.navigate([`${environment.app_name}/${page}`]);
+    //TODO Remove the if statement when login is implemented
+    if (this.selectedPage === 'login') {
+      this.selectedPage = 'home';
+    }
+    this.router.navigate([`${environment.app_name}/${this.selectedPage}`]);
+  }
+
+  isHandset(): boolean {
+    return this.breakpointObserver.isMatched(Breakpoints.Handset);
   }
 
 }

@@ -6,3 +6,7 @@ mat-card-content  {
 mat-card  {
   margin-top: 20px;
 }
+
+p{
+  line-height: 1.7;
+}
