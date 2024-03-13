@@ -2,9 +2,6 @@ import {Component} from '@angular/core';
 import {
   BacktestingSettingsPanelComponent
 } from "../components/backtesting-settings-panel/backtesting-settings-panel.component";
-import {
-  BacktestingResultsPanelComponent
-} from "../components/backtesting-results-panel/backtesting-results-panel.component";
 import {ResultsBlockComponent} from "../components/results-block/results-block.component";
 import {ResultsBlockItem} from "../models/ResultsBlockItem";
 import {BasicBacktestingResults} from "../models/BasicBacktestingResults";
@@ -20,7 +17,6 @@ import {MatProgressBar} from "@angular/material/progress-bar";
   standalone: true,
   imports: [
     BacktestingSettingsPanelComponent,
-    BacktestingResultsPanelComponent,
     ResultsBlockComponent,
     NgForOf,
     MatProgressBar
