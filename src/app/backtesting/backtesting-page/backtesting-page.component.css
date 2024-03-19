@@ -13,3 +13,12 @@ div.results-block {
 mat-progress-bar  {
   margin-top: 20px;
 }
+
+sycm-results-block  {
+  animation: inverse-fade 0.3s ease-in-out forwards;
+}
+
+@keyframes inverse-fade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
