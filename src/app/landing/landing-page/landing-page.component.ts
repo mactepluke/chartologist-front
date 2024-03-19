@@ -28,6 +28,6 @@ export class LandingPageComponent {
   }
 
   protected onGetStared() {
-    this.router.navigate([`${environment.app_name}/home`]).then(() => this.hasLanded.emit(true));
+    this.router.navigate(['home']).then(() => this.hasLanded.emit(true));
   }
 }

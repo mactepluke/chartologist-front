@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {BreakpointObserver, Breakpoints, BreakpointState} from '@angular/cdk/layout';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {AsyncPipe, TitleCasePipe, UpperCasePipe} from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
@@ -57,7 +57,7 @@ export class NavigationMenuComponent implements OnInit {
     if (this.selectedPage === 'login') {
       this.selectedPage = 'home';
     }
-    this.router.navigate([`${environment.app_name}/${this.selectedPage}`]);
+    this.router.navigate([`${this.selectedPage}`]);
   }
 
   isHandset(): boolean {
