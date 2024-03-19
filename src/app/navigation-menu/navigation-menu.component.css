@@ -48,11 +48,22 @@ mat-nav-list {
   margin-bottom: 5px;
 }
 
-#title {
-  font-family: "Anta", sans-serif;
-  font-size: 24px;
-  font-weight: lighter;
+@media (hover: none) {
+  #title {
+    font-family: "Anta", sans-serif;
+    font-size: 1.1rem;
+    font-weight: lighter;
+  }
 }
+
+@media (hover: hover) {
+  #title {
+    font-family: "Anta", sans-serif;
+    font-size: 1.5rem;
+    font-weight: lighter;
+  }
+}
+
 
 #titleBar {
   display: flex;

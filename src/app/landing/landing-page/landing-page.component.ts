@@ -5,6 +5,8 @@ import {environment} from "../../../environments/environment";
 import {AppIconComponent} from "../../core/app-icon/app-icon.component";
 import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {DisclaimerDialogComponent} from "../../disclaimer-dialog/disclaimer-dialog.component";
 
 @Component({
   selector: 'sycm-landing-page',
@@ -24,10 +26,23 @@ export class LandingPageComponent {
   @Output()
   private hasLanded = new EventEmitter<boolean>();
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private dialog: MatDialog) {
   }
 
   protected onGetStared() {
-    this.router.navigate(['home']).then(() => this.hasLanded.emit(true));
+    this.openDialog();
   }
+
+  protected openDialog() {
+    const dialogRef = this.dialog.open(DisclaimerDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.router.navigate(['home']).then(() => this.hasLanded.emit(true));
+      } else {
+        window.history.back();
+      }
+    });
+  }
+
 }

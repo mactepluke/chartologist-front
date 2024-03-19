@@ -10,19 +10,46 @@ img {
   filter: saturate(0.7);
 }
 
-.app-title {
-  font-size: 4rem;
-  font-family: Anta, sans-serif;
+@media (hover: hover) {
+  .app-title {
+    font-size: 4rem;
+    font-family: Anta, sans-serif;
+  }
 }
 
-h1 {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-top: 200px;
+@media (hover: none) {
+  .app-title {
+    font-size: 2rem;
+    font-family: Anta, sans-serif;
+  }
 }
 
-.icon {
-  width: 100px;
+@media (hover: hover) {
+  h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 200px;
+  }
+}
+
+@media (hover: none) {
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 200px;
+  }
+}
+
+@media (hover: none) {
+  .icon {
+    width: 70px;
+  }
+}
+
+@media (hover: hover) {
+  .icon {
+    width: 100px;
+  }
 }
 
 .buttons {
