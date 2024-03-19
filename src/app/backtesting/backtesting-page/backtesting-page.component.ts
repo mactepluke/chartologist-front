@@ -11,6 +11,8 @@ import {BacktestingService} from "../services/backtesting.service";
 import {BacktestingSettings} from "../models/BacktestingSettings";
 import {Trade} from "../../core/models/Trade";
 import {MatProgressBar} from "@angular/material/progress-bar";
+import {DisplayService} from "../../shared_services/display.service";
+import {timeout} from "rxjs";
 
 @Component({
   selector: 'sycm-backtesting-page',
@@ -22,7 +24,8 @@ import {MatProgressBar} from "@angular/material/progress-bar";
     MatProgressBar
   ],
   providers: [
-    BacktestingService
+    BacktestingService,
+    DisplayService
   ],
   templateUrl: './backtesting-page.component.html',
   styleUrl: './backtesting-page.component.css'
@@ -33,7 +36,7 @@ export class BacktestingPageComponent {
   displayResultsBlocks = false;
   serverIsBusy = false;
 
-  constructor(private backtestingService: BacktestingService) {
+  constructor(private backtestingService: BacktestingService, private displayService: DisplayService) {
   }
 
 
@@ -43,13 +46,27 @@ export class BacktestingPageComponent {
     this.serverIsBusy = true;
 
     this.backtestingService.runBackTesting($settings.symbol, $settings.timeframe, $settings.range.start, $settings.range.end, $settings.balance)
+      .pipe(
+        timeout(60000)
+      )
       .subscribe({
           next: (results: BasicBacktestingResults) => {
             this.contents = this.generateResultsBlockContents(results);
             this.serverIsBusy = false;
             this.displayResultsBlocks = true;
+            this.displayService.openSnackBar('Backtesting finished')
           },
-          error: () => console.log('Could not load backtesting results')
+          error: (error) => {
+            if (error.name === 'TimeoutError') {
+              this.serverIsBusy = false;
+              console.log('Request has timed out.');
+              this.displayService.openSnackBar('Error: Request has timed out.');
+            } else {
+              this.serverIsBusy = false;
+              console.log('Error: could not load backtesting results');
+              this.displayService.openSnackBar('Error: could not load backtesting results');
+            }
+          }
         }
       );
 
