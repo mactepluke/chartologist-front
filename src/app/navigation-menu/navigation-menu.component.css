@@ -21,12 +21,8 @@ a {
   margin-bottom: 20px;
 }
 
-mat-icon {
-  padding-top: 10px;
-}
-
 mat-nav-list {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .container {
@@ -37,9 +33,17 @@ mat-nav-list {
   margin: 10px 0 10px 0;
 }
 
+.horizontal-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 6px;
+  cursor: pointer;
+}
+
 .icon {
-  margin-bottom: 30px;
   width: 50px;
+  margin-right: 5px;
 }
 
 .items {
@@ -51,7 +55,7 @@ mat-nav-list {
 @media (hover: none) {
   #title {
     font-family: "Anta", sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: lighter;
   }
 }
@@ -59,7 +63,7 @@ mat-nav-list {
 @media (hover: hover) {
   #title {
     font-family: "Anta", sans-serif;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: lighter;
   }
 }
@@ -68,7 +72,6 @@ mat-nav-list {
 #titleBar {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
 }
 
