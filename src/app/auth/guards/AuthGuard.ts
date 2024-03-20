@@ -4,17 +4,19 @@ import {inject} from "@angular/core";
 import {DisplayService} from "../../shared_services/display.service";
 
 export function AuthGuard(): CanActivateFn {
-  return () : boolean => {
-    const authService: AuthService = inject(AuthService);
-    const router: Router = inject(Router);
+  return isAllowed;
+}
 
-    if (authService.isLoggedIn() ) {
-      return true;
-    }
+function isAllowed(): boolean {
+  const authService: AuthService = inject(AuthService);
+  const router: Router = inject(Router);
 
-    const displayService: DisplayService = inject(DisplayService);
-    router.navigateByUrl('dashboard').then(() => displayService.openSnackBar('You must be logged in to use this feature!'));
+  if (authService.isLoggedIn() ) {
+    return true;
+  }
 
-    return false;
-  };
+  const displayService: DisplayService = inject(DisplayService);
+  router.navigateByUrl('dashboard').then(() => displayService.openSnackBar('You must be logged in to use this feature!'));
+
+  return false;
 }
