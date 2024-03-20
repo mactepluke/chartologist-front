@@ -38,8 +38,7 @@ export interface BasicBacktestingResults {
     MatProgressBar
   ],
   providers: [
-    BacktestingService,
-    DisplayService
+    BacktestingService
   ],
   templateUrl: './backtesting-page.component.html',
   styleUrl: './backtesting-page.component.css'

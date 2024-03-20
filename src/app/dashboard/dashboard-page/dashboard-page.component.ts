@@ -10,9 +10,6 @@ import {DashboardPanelComponent} from "../dashboard-panel/dashboard-panel.compon
     LoginPanelComponent,
     DashboardPanelComponent
   ],
-  providers: [
-    AuthService
-  ],
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.css'
 })

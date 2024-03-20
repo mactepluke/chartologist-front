@@ -7,7 +7,10 @@ import {HttpClient, HttpClientModule, provideHttpClient, withInterceptors} from 
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule} from "@angular/platform-browser";
 import {DatePipe} from "@angular/common";
-import {apikeyInterceptor} from "./auth/interceptors/apikey.interceptor";
+import {authInterceptor} from "./auth/interceptors/authInterceptor";
+import {AuthService} from "./auth/services/auth.service";
+import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
+import {DisplayService} from "./shared_services/display.service";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,7 +18,11 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(BrowserModule, BrowserAnimationsModule, HttpClient, HttpClientModule),
     DatePipe,
     provideHttpClient(
-      withInterceptors([apikeyInterceptor]),
-    )
+      withInterceptors([authInterceptor]),
+    ),
+    {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
+    JwtHelperService,
+    AuthService,
+    DisplayService
   ]
 };

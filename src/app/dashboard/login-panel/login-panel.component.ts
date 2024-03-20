@@ -45,8 +45,7 @@ export interface User {
   ],
   providers: [
     AuthService,
-    FormBuilder,
-    DisplayService
+    FormBuilder
   ],
   templateUrl: './login-panel.component.html',
   styleUrl: './login-panel.component.css'

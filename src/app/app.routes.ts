@@ -1,4 +1,5 @@
 import {Routes} from '@angular/router';
+import {AuthGuard} from "./auth/guards/AuthGuard";
 
 export const routes: Routes = [
   {
@@ -12,11 +13,13 @@ export const routes: Routes = [
   {
     path: 'signals',
     title: 'Signals',
+    canActivate: [AuthGuard()],
     loadComponent: () => import('./signals/signals-page/signals-page.component').then(module => module.SignalsPageComponent)
   },
   {
     path: 'trading-bot',
     title: 'Trading Bot',
+    canActivate: [AuthGuard()],
     loadComponent: () => import('./trading-bot/trading-bot-page/trading-bot-page.component').then(module => module.TradingBotPageComponent)
   },
   {
