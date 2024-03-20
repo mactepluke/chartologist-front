@@ -2,9 +2,14 @@ import {Component, Input} from '@angular/core';
 import {MatCard, MatCardContent} from "@angular/material/card";
 import {MatDivider} from "@angular/material/divider";
 import {UpperCasePipe} from "@angular/common";
-import {ResultsBlockItem} from "../../models/ResultsBlockItem";
-import {ResultsBlockContent} from "../../models/ResultsBlockContent";
+import {ResultsBlockContent} from "../ResultsBlockContent";
 import {MatIcon} from "@angular/material/icon";
+
+export interface ResultsBlockItem {
+  name: string;
+  unit: string;
+  value: number | string | Date | undefined;
+}
 
 @Component({
   selector: 'sycm-results-block',
@@ -19,6 +24,7 @@ import {MatIcon} from "@angular/material/icon";
   templateUrl: './results-block.component.html',
   styleUrl: './results-block.component.css'
 })
+
 export class ResultsBlockComponent {
   @Input()
   content!: ResultsBlockContent;

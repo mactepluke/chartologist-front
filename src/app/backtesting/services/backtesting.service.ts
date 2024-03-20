@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {BasicBacktestingResults} from "../models/BasicBacktestingResults";
+import {BasicBacktestingResults} from "./BasicBacktestingResults";
 import {environment} from "../../../environments/environment";
 import {DatePipe} from "@angular/common";
 
@@ -12,9 +12,7 @@ export class BacktestingService {
   }
 
   runBackTesting(symbol: string, timeframe: string, startDate: Date, endDate: Date, accountBalance: number): Observable<BasicBacktestingResults> {
-    return this.http.get<BasicBacktestingResults>
-    (
-      `${environment.backend_address}/backtesting/get-results?` +
+    return this.http.get<BasicBacktestingResults> (`${environment.backend_address}/backtesting/get-results?` +
       `symbol=${symbol}` +
       `&timeframe=${timeframe}` +
       `&startDate=${this.datePipe.transform(startDate, 'yyyy-MM-dd')}` +

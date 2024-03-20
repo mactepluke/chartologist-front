@@ -1,18 +1,32 @@
 import {Component} from '@angular/core';
 import {
+  BacktestingSettings,
   BacktestingSettingsPanelComponent
-} from "../components/backtesting-settings-panel/backtesting-settings-panel.component";
-import {ResultsBlockComponent} from "../components/results-block/results-block.component";
-import {ResultsBlockItem} from "../models/ResultsBlockItem";
-import {BasicBacktestingResults} from "../models/BasicBacktestingResults";
-import {ResultsBlockContent} from "../models/ResultsBlockContent";
+} from "../backtesting-settings-panel/backtesting-settings-panel.component";
+import {ResultsBlockComponent, ResultsBlockItem} from "./results-block/results-block.component";
+import {ResultsBlockContent} from "./ResultsBlockContent";
 import {NgForOf} from "@angular/common";
 import {BacktestingService} from "../services/backtesting.service";
-import {BacktestingSettings} from "../models/BacktestingSettings";
 import {Trade} from "../../core/models/Trade";
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {DisplayService} from "../../shared_services/display.service";
 import {timeout} from "rxjs";
+
+export interface BasicBacktestingResults {
+  accountBalance: number;
+  pnl: number;
+  returnPercentage: number;
+  annualizedReturnPercentage: number;
+  tradeNumber: number;
+  battingAveragePercentage: number;
+  winLossRatio: number;
+  profitFactor: number;
+  totalDurationInDays: number;
+  actualTradingDurationPercentage: number;
+  feePercentage: number;
+  trades: Trade[];
+
+}
 
 @Component({
   selector: 'sycm-backtesting-page',
