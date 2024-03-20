@@ -22,7 +22,7 @@ a {
 }
 
 mat-nav-list {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .container {
@@ -91,4 +91,8 @@ toolbar-button {
 
 .account-icon {
   margin-top: 6px;
+}
+
+.nav-icon {
+  margin-top: 8px;
 }

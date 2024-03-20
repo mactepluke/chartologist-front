@@ -42,7 +42,7 @@ export const routes: Routes = [
   {
     path: 'create-account',
     title: 'Create Account',
-    loadComponent: () => import('./dashboard/create-account-panel/create-account-panel.component').then(module => module.CreateAccountPanelComponent)
+    loadComponent: () => import('./dashboard/create-account-page/create-account-page.component').then(module => module.CreateAccountPageComponent)
   },
   {
     path: '**',

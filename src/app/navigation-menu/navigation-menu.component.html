@@ -10,41 +10,41 @@
 
       <a (click)="onSelectPage('backtesting'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
-          <mat-icon>bar_chart</mat-icon>
+          <mat-icon class="nav-icon">bar_chart</mat-icon>
           <div class="items">BACKTESTING</div>
         </div>
       </a>
 
       <a (click)="onSelectPage('signals'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
-          <mat-icon>multiline_chart</mat-icon>
+          <mat-icon class="nav-icon">multiline_chart</mat-icon>
           <div class="items">SIGNALS</div>
         </div>
       </a>
 
       <a (click)="onSelectPage('trading-bot'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
-          <mat-icon>adb</mat-icon>
+          <mat-icon class="nav-icon">adb</mat-icon>
           <div class="items">TRADING BOT</div>
         </div>
       </a>
 
       <a (click)="onSelectPage('pricing'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
-          <mat-icon>euro_symbol</mat-icon>
+          <mat-icon class="nav-icon">euro_symbol</mat-icon>
           <div class="items">PRICING</div>
         </div>
       </a>
       <a (click)="onSelectPage('faq'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
-          <mat-icon>speaker_notes</mat-icon>
+          <mat-icon class="nav-icon">speaker_notes</mat-icon>
           <div class="items">FAQ</div>
         </div>
       </a>
 
       <a (click)="onSelectPage('contact'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container" >
-          <mat-icon>alternate_email</mat-icon>
+          <mat-icon class="nav-icon">alternate_email</mat-icon>
           <div class="items">CONTACT</div>
         </div>
       </a>
@@ -72,8 +72,8 @@
           <mat-icon (click)="onSelectPage('dashboard')" class="account-icon">account_circle</mat-icon>
         }
         @else {
-        <button class="toolbar-button" mat-button>Sign in</button>
-        <button class="toolbar-button" color="accent" mat-button>Sign up</button>
+        <button (click)="onSelectPage('dashboard')" class="toolbar-button" mat-button>Sign in</button>
+        <button (click)="onSelectPage('create-account')" class="toolbar-button" color="accent" mat-button>Sign up</button>
         }
       </div>
     </mat-toolbar>

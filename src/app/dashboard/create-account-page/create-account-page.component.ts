@@ -23,7 +23,7 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'sycm-create-account-panel',
+  selector: 'sycm-create-account-page',
   standalone: true,
   imports: [
     ReactiveFormsModule,
@@ -41,10 +41,10 @@ import {Router} from "@angular/router";
     MatLabel,
     MatHint
   ],
-  templateUrl: './create-account-panel.component.html',
-  styleUrl: './create-account-panel.component.css'
+  templateUrl: './create-account-page.component.html',
+  styleUrl: './create-account-page.component.css'
 })
-export class CreateAccountPanelComponent implements OnInit {
+export class CreateAccountPageComponent implements OnInit {
   form!: FormGroup;
   hide = true;
 
