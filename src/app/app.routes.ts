@@ -35,8 +35,18 @@ export const routes: Routes = [
     loadComponent: () => import('./contact/contact-page/contact-page.component').then(module => module.ContactPageComponent)
   },
   {
+    path: 'dashboard',
+    title: 'Dashboard',
+    loadComponent: () => import('./dashboard/dashboard-page/dashboard-page.component').then(module => module.DashboardPageComponent)
+  },
+  {
+    path: 'create-account',
+    title: 'Create Account',
+    loadComponent: () => import('./dashboard/create-account-panel/create-account-panel.component').then(module => module.CreateAccountPanelComponent)
+  },
+  {
     path: '**',
-    title: 'home',
+    title: 'Home',
     loadComponent: () => import('./home/home-page/home-page.component').then(module => module.HomePageComponent)
   }
 ];

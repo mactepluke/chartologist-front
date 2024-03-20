@@ -1,0 +1,25 @@
+<mat-card [formGroup]="form">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-subtitle>Enter your credentials or create a new account</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="cardFieldRows">
+      <mat-form-field class="formFields">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username">
+      </mat-form-field>
+      <mat-form-field class="formFields">
+        <mat-label>Password</mat-label>
+        <input [type]="hide ? 'password' : 'text'" matInput formControlName="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onLogin()">Log In</button>
+    <button routerLink="../create-account" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true }" id="create-account" mat-raised-button >Create a new account</button>
+  </mat-card-actions>
+</mat-card>

@@ -8,7 +8,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
-import {Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 import {AppIconComponent} from "../core/app-icon/app-icon.component";
 import {environment} from "../../environments/environment";
 
@@ -26,8 +26,6 @@ import {environment} from "../../environments/environment";
     AsyncPipe,
     RouterOutlet,
     AppIconComponent,
-    RouterLinkActive,
-    RouterLink,
     UpperCasePipe,
     TitleCasePipe,
   ]
@@ -50,6 +48,7 @@ export class NavigationMenuComponent implements OnInit {
     }
 
   protected onSelectPage(page: string) {
+    console.log('Navigating to ' + page);
     this.router.navigate([page]);
   }
 

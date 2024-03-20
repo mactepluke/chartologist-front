@@ -101,7 +101,6 @@ export class BacktestingSettingsPanelComponent implements OnInit {
 
   onRunBacktesting() {
     let settings = this.form.value;
-    console.log(JSON.stringify(settings));
     this.settings.emit(settings);
   }
 

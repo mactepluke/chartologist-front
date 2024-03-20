@@ -69,7 +69,7 @@
       </div>
       <div>
         @if (isHandset$ | async) {
-          <mat-icon class="account-icon">account_circle</mat-icon>
+          <mat-icon (click)="onSelectPage('dashboard')" class="account-icon">account_circle</mat-icon>
         }
         @else {
         <button class="toolbar-button" mat-button>Sign in</button>
