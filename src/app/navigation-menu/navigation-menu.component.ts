@@ -33,8 +33,6 @@ import {environment} from "../../environments/environment";
   ]
 })
 export class NavigationMenuComponent implements OnInit {
-  protected pages = ['home', 'backtesting', 'signals', 'trading-bot', 'pricing', 'login', 'faq', 'contact'];
-  protected selectedPage = this.pages[0];
   protected readonly environment = environment;
   private breakpointObserver = inject(BreakpointObserver);
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -52,12 +50,7 @@ export class NavigationMenuComponent implements OnInit {
     }
 
   protected onSelectPage(page: string) {
-    this.selectedPage = page;
-    //TODO Remove the if statement when login is implemented
-    if (this.selectedPage === 'login') {
-      this.selectedPage = 'home';
-    }
-    this.router.navigate([`${this.selectedPage}`]);
+    this.router.navigate([page]);
   }
 
   isHandset(): boolean {

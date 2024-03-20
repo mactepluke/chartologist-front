@@ -41,11 +41,6 @@ mat-nav-list {
   cursor: pointer;
 }
 
-.icon {
-  width: 50px;
-  margin-right: 5px;
-}
-
 .items {
   font-size: 10px;
   font-weight: lighter;
@@ -58,6 +53,11 @@ mat-nav-list {
     font-size: 1.3rem;
     font-weight: lighter;
   }
+
+  .icon {
+    width: 40px;
+    margin-right: 5px;
+  }
 }
 
 @media (hover: hover) {
@@ -66,8 +66,16 @@ mat-nav-list {
     font-size: 2rem;
     font-weight: lighter;
   }
+
+  .icon {
+    width: 50px;
+    margin-right: 5px;
+  }
 }
 
+h1  {
+  padding-bottom: 8px;
+}
 
 #titleBar {
   display: flex;
@@ -75,7 +83,12 @@ mat-nav-list {
   justify-content: space-between;
 }
 
-button {
+toolbar-button {
   font-size: 16px;
   margin-left: 5px;
+}
+
+
+.account-icon {
+  margin-top: 6px;
 }
