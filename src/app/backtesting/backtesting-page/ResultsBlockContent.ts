@@ -1,4 +1,4 @@
-import {ResultsBlockItem} from "./results-block/results-block.component";
+import {ResultsBlockItem} from "../results-block/results-block.component";
 
 export class ResultsBlockContent {
   readonly items!: ResultsBlockItem[];

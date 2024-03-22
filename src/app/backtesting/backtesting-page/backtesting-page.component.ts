@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
 import {
   BacktestingSettings,
   BacktestingSettingsPanelComponent
 } from "../backtesting-settings-panel/backtesting-settings-panel.component";
-import {ResultsBlockComponent, ResultsBlockItem} from "./results-block/results-block.component";
+import {ResultsBlockComponent, ResultsBlockItem} from "../results-block/results-block.component";
 import {ResultsBlockContent} from "./ResultsBlockContent";
 import {NgForOf} from "@angular/common";
 import {BacktestingService} from "../services/backtesting.service";
@@ -41,7 +41,8 @@ export interface BasicBacktestingResults {
     BacktestingService
   ],
   templateUrl: './backtesting-page.component.html',
-  styleUrl: './backtesting-page.component.css'
+  styleUrl: './backtesting-page.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class BacktestingPageComponent {
@@ -49,7 +50,9 @@ export class BacktestingPageComponent {
   displayResultsBlocks = false;
   serverIsBusy = false;
 
-  constructor(private backtestingService: BacktestingService, private displayService: DisplayService) {
+  constructor(private backtestingService: BacktestingService,
+              private displayService: DisplayService,
+              private cdr: ChangeDetectorRef) {
   }
 
   launchBackTesting($settings: BacktestingSettings) {
@@ -67,7 +70,8 @@ export class BacktestingPageComponent {
               this.contents = this.generateResultsBlockContents(results);
               this.serverIsBusy = false;
               this.displayResultsBlocks = true;
-              this.displayService.openSnackBar('Backtesting finished')
+              this.displayService.openSnackBar('Backtesting finished');
+              this.cdr.detectChanges()
             },
             error: (error) => {
               if (error.name === 'TimeoutError') {

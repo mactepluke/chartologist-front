@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatTab, MatTabGroup} from "@angular/material/tabs";
 import {AboutTabComponent} from "../about-tab/about-tab.component";
 import {FeaturesTabComponent} from "../features-tab/features-tab.component";
@@ -15,7 +15,8 @@ import {DisclaimerTabComponent} from "../disclaimer-tab/disclaimer-tab.component
     DisclaimerTabComponent
   ],
   templateUrl: './home-tab-group.component.html',
-  styleUrl: './home-tab-group.component.css'
+  styleUrl: './home-tab-group.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeTabGroupComponent {
 

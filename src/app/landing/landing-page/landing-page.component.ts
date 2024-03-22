@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {NgOptimizedImage, TitleCasePipe} from "@angular/common";
 import {MatCard} from "@angular/material/card";
 import {environment} from "../../../environments/environment";
@@ -19,7 +19,8 @@ import {DisclaimerDialogComponent} from "../../disclaimer-dialog/disclaimer-dial
     MatButton
   ],
   templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.scss', './_landing-page.component-theme.scss']
+  styleUrls: ['./landing-page.component.scss', './_landing-page.component-theme.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingPageComponent {
   protected readonly environment = environment;

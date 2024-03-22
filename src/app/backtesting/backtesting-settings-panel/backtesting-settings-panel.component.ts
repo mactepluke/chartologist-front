@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from "@angular/material/card";
 import {MatError, MatFormField, MatHint, MatLabel} from "@angular/material/form-field";
 import {
@@ -61,7 +61,8 @@ interface MenuItems {
     MatNativeDateModule
   ],
   templateUrl: './backtesting-settings-panel.component.html',
-  styleUrl: './backtesting-settings-panel.component.css'
+  styleUrl: './backtesting-settings-panel.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class BacktestingSettingsPanelComponent implements OnInit {

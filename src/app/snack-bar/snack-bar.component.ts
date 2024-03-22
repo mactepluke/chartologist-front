@@ -1,4 +1,4 @@
-import {Component, inject, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Inject} from '@angular/core';
 import {
   MAT_SNACK_BAR_DATA,
   MatSnackBarAction,
@@ -20,7 +20,8 @@ import {MatIcon} from "@angular/material/icon";
     MatIcon
   ],
   templateUrl: './snack-bar.component.html',
-  styleUrl: './snack-bar.component.css'
+  styleUrl: './snack-bar.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SnackBarComponent {
   snackBarRef: MatSnackBarRef<any> = inject(MatSnackBarRef);

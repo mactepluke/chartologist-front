@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {
   MatCard,
   MatCardContent,
@@ -20,7 +20,8 @@ import {
     MatCardImage
   ],
   templateUrl: './features-tab.component.html',
-  styleUrl: './features-tab.component.css'
+  styleUrl: './features-tab.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeaturesTabComponent {
 

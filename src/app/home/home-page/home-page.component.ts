@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {MatCard} from "@angular/material/card";
 import {HomeTabGroupComponent} from "../home-tab-group/home-tab-group.component";
@@ -12,7 +12,8 @@ import {HomeTabGroupComponent} from "../home-tab-group/home-tab-group.component"
     HomeTabGroupComponent
   ],
   templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.css'
+  styleUrl: './home-page.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePageComponent {
 

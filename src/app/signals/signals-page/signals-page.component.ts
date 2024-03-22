@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from "@angular/material/card";
 
 @Component({
@@ -12,7 +12,8 @@ import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} f
         MatCardTitle
     ],
   templateUrl: './signals-page.component.html',
-  styleUrl: './signals-page.component.css'
+  styleUrl: './signals-page.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignalsPageComponent {
 

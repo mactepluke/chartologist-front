@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 
 @Component({
@@ -8,7 +8,8 @@ import {NgOptimizedImage} from "@angular/common";
     NgOptimizedImage
   ],
   templateUrl: './about-tab.component.html',
-  styleUrl: './about-tab.component.css'
+  styleUrl: './about-tab.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AboutTabComponent {
 

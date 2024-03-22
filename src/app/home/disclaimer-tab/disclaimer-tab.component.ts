@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from "@angular/material/card";
 import {DisclaimerContentComponent} from "../../disclaimer-content/disclaimer-content.component";
 
@@ -14,7 +14,8 @@ import {DisclaimerContentComponent} from "../../disclaimer-content/disclaimer-co
     DisclaimerContentComponent
   ],
   templateUrl: './disclaimer-tab.component.html',
-  styleUrl: './disclaimer-tab.component.css'
+  styleUrl: './disclaimer-tab.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DisclaimerTabComponent {
 

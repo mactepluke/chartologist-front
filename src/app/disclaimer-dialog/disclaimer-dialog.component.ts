@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {DisclaimerContentComponent} from "../disclaimer-content/disclaimer-content.component";
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatButton} from "@angular/material/button";
@@ -15,7 +15,8 @@ import {MatButton} from "@angular/material/button";
     MatButton
   ],
   templateUrl: './disclaimer-dialog.component.html',
-  styleUrl: './disclaimer-dialog.component.css'
+  styleUrl: './disclaimer-dialog.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DisclaimerDialogComponent {
 

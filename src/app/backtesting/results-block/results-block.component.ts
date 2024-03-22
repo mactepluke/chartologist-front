@@ -1,8 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {MatCard, MatCardContent} from "@angular/material/card";
 import {MatDivider} from "@angular/material/divider";
 import {UpperCasePipe} from "@angular/common";
-import {ResultsBlockContent} from "../ResultsBlockContent";
+import {ResultsBlockContent} from "../backtesting-page/ResultsBlockContent";
 import {MatIcon} from "@angular/material/icon";
 
 export interface ResultsBlockItem {
@@ -22,7 +22,8 @@ export interface ResultsBlockItem {
     MatIcon
   ],
   templateUrl: './results-block.component.html',
-  styleUrl: './results-block.component.css'
+  styleUrl: './results-block.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ResultsBlockComponent {

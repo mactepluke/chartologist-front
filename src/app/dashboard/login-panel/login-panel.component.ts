@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {DisplayService} from "../../shared_services/display.service";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {AuthService} from "../../auth/services/auth.service";
@@ -48,7 +48,8 @@ export interface User {
     FormBuilder
   ],
   templateUrl: './login-panel.component.html',
-  styleUrl: './login-panel.component.css'
+  styleUrl: './login-panel.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginPanelComponent implements OnInit {
   form!: FormGroup;

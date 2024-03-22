@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {AuthService} from "../../auth/services/auth.service";
 import {LoginPanelComponent} from "../login-panel/login-panel.component";
 import {DashboardPanelComponent} from "../dashboard-panel/dashboard-panel.component";
@@ -11,7 +11,8 @@ import {DashboardPanelComponent} from "../dashboard-panel/dashboard-panel.compon
     DashboardPanelComponent
   ],
   templateUrl: './dashboard-page.component.html',
-  styleUrl: './dashboard-page.component.css'
+  styleUrl: './dashboard-page.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardPageComponent implements OnInit {
   isLoggedIn!: boolean;

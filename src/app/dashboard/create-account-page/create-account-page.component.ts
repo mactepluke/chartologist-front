@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -42,7 +42,8 @@ import {Router} from "@angular/router";
     MatHint
   ],
   templateUrl: './create-account-page.component.html',
-  styleUrl: './create-account-page.component.css'
+  styleUrl: './create-account-page.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateAccountPageComponent implements OnInit {
   form!: FormGroup;
