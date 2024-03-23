@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {DisplayService} from "../../shared_services/display.service";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {AuthService} from "../../auth/services/auth.service";
@@ -55,13 +55,15 @@ export class LoginPanelComponent implements OnInit {
   form!: FormGroup;
   hide: boolean = true;
   user!: User;
+  @Output()
+  isLoggedIn : EventEmitter<boolean> = new EventEmitter<boolean>
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private displayService: DisplayService) {
   }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      username: [null, [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ- ]{3,50}$')]],
+      username: [null, [Validators.required, Validators.pattern('[A-Za-zÀ-ÿ- ]{3,50}$')]],
       password: [null, [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&]).{8,30}')]],
     });
   }
@@ -69,15 +71,15 @@ export class LoginPanelComponent implements OnInit {
   onLogin() : void {
     this.user = this.form.value;
 
-    /*this.authService.login(this.user).subscribe(
+    this.authService.login(this.user).subscribe(
       {
         next: () => {
-          this.router.navigate(['home'])
-            .then(() => this.displayService.openSnackBar(`User \'${this.user.username}\' is logged in!`))
+          this.isLoggedIn.emit(this.authService.isLoggedIn());
+          this.displayService.openSnackBar(`User \'${this.user.username}\' is logged in!`);
         },
         error: () => this.displayService.openSnackBar(`Could not log in, try with other credentials or create a new user`)
       }
-    );*/
+    );
   }
 
 }

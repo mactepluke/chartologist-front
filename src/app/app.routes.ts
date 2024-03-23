@@ -3,7 +3,7 @@ import {AuthGuard} from "./auth/guards/AuthGuard";
 
 export const routes: Routes = [
   {
-    path: '', redirectTo: 'home', pathMatch: 'full'
+    path: '', redirectTo: 'Home', pathMatch: 'full'
   },
   {
     path: 'backtesting',

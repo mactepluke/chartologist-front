@@ -21,6 +21,9 @@ import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {Router} from "@angular/router";
+import {AuthService} from "../../auth/services/auth.service";
+import {User} from "../../auth/models/User";
+import {DisplayService} from "../../shared_services/display.service";
 
 @Component({
   selector: 'sycm-create-account-page',
@@ -41,6 +44,10 @@ import {Router} from "@angular/router";
     MatLabel,
     MatHint
   ],
+  providers: [
+    AuthService,
+    DisplayService
+  ],
   templateUrl: './create-account-page.component.html',
   styleUrl: './create-account-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -49,7 +56,7 @@ export class CreateAccountPageComponent implements OnInit {
   form!: FormGroup;
   hide = true;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private displayService: DisplayService) {
   }
 
   ngOnInit(): void {
@@ -73,12 +80,20 @@ export class CreateAccountPageComponent implements OnInit {
   }
 
   onCreate() {
+    let user: User = this.form.value;
 
+    this.authService.createUser(user)
+      .subscribe({
+          next: (user) =>
+            this.router.navigate(['dashboard'])
+              .then(() => this.displayService.openSnackBar(`User \'${user.username}\' has been created!`)),
+          error: () => this.displayService.openSnackBar(`Could not create user with username: \'${user.username}\'`)
+        }
+      )
   }
 
-
   onLoginWithAccount() {
-/*    this.authService.logout();*/
+    this.authService.logout();
     this.router.navigate(['dashboard']);
   }
 }

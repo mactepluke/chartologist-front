@@ -25,7 +25,7 @@ import {DisclaimerDialogComponent} from "../../disclaimer-dialog/disclaimer-dial
 export class LandingPageComponent {
   protected readonly environment = environment;
   @Output()
-  private hasLanded = new EventEmitter<boolean>();
+  private hasLanded : EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private router: Router, private dialog: MatDialog) {
   }

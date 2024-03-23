@@ -25,5 +25,7 @@ export class DashboardPageComponent implements OnInit {
   }
 
 
-
+  setLoginStatus($event: boolean) {
+    this.isLoggedIn = $event;
+  }
 }

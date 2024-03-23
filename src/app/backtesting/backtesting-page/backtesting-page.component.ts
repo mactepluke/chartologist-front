@@ -78,10 +78,12 @@ export class BacktestingPageComponent {
                 this.serverIsBusy = false;
                 console.log('Request has timed out.');
                 this.displayService.openSnackBar('Error: Request has timed out.');
+                this.cdr.detectChanges()
               } else {
                 this.serverIsBusy = false;
                 console.log('Error: could not load backtesting results');
                 this.displayService.openSnackBar('Error: could not load backtesting results');
+                this.cdr.detectChanges()
               }
             }
           }
