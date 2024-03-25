@@ -49,7 +49,6 @@ export class NavigationMenuComponent implements OnInit {
     }
 
   protected onSelectPage(page: string) {
-    console.log('Navigating to ' + page);
     this.router.navigate([page]);
   }
 

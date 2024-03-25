@@ -79,14 +79,17 @@ export class CreateAccountPageComponent implements OnInit {
     return pass === confirmPass ? null : {notSame: true}
   }
 
+
   onCreate() {
     let user: User = this.form.value;
 
     this.authService.createUser(user)
       .subscribe({
-          next: (user) =>
+          next: (user) => {
+            this.authService.logout();
             this.router.navigate(['dashboard'])
-              .then(() => this.displayService.openSnackBar(`User \'${user.username}\' has been created!`)),
+              .then(() => this.displayService.openSnackBar(`User \'${user.username}\' has been created!`))
+          },
           error: () => this.displayService.openSnackBar(`Could not create user with username: \'${user.username}\'`)
         }
       )

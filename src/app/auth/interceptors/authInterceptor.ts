@@ -1,6 +1,5 @@
 import {HttpHeaders, HttpInterceptorFn} from '@angular/common/http';
 import {environment} from "../../../environments/environment";
-import {User} from "../models/User";
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
@@ -21,6 +20,5 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const modifiedReq = req.clone({
     headers: httpHeaders
   });
-  console.log(httpHeaders);
   return next(modifiedReq);
 };

@@ -77,8 +77,7 @@ export class LoginPanelComponent implements OnInit {
           this.isLoggedIn.emit(this.authService.isLoggedIn());
           this.displayService.openSnackBar(`User \'${this.user.username}\' is logged in!`);
         },
-        error: (e) => {
-          console.log(e);
+        error: () => {
           this.displayService.openSnackBar(`Could not log in, try with other credentials or create a new user`);
         }
       }

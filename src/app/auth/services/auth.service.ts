@@ -5,7 +5,6 @@ import moment from 'moment';
 import {User} from "../models/User";
 import {Observable, tap} from "rxjs";
 import {environment} from "../../../environments/environment";
-import {AuthResponse} from "../models/AuthResponse";
 import {shareReplay} from "rxjs/operators";
 
 @Injectable()
@@ -25,23 +24,10 @@ export class AuthService {
       });
   }
 
-  /*
-    login(user: User): Observable<AuthResponse> {
-      return this.http.post<AuthResponse>(`${environment.backend_address}/user/login`,
-        {
-          "username": `${user.username}`,
-          "password": `${user.password}`
-        }).pipe(
-        tap(res => this.setSession(res)),
-        shareReplay()
-      );
-    }
-  */
-
   login(user: User): Observable<HttpResponse<User>> {
 
+    this.logout();
     localStorage.setItem("userdetails", JSON.stringify(user));
-    localStorage.removeItem('jwtToken');
 
     return this.http.get<User>(`${environment.backend_address}/user/login`, {
       observe: 'response', withCredentials: true
