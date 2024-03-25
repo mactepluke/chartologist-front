@@ -24,6 +24,7 @@ import {Router} from "@angular/router";
 import {AuthService} from "../../auth/services/auth.service";
 import {User} from "../../auth/models/User";
 import {DisplayService} from "../../shared_services/display.service";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'sycm-create-account-page',
@@ -61,9 +62,9 @@ export class CreateAccountPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-        username: [null, [Validators.required, Validators.pattern('[A-Za-zÀ-ÿ- ]{3,50}$')]],
-        password: [null, [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&]).{8,30}')]],
-        confirmedPassword: [null, [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&]).{8,30}')]],
+        username: [null, [Validators.required, Validators.pattern(environment.usernameRegex)]],
+        password: [null, [Validators.required, Validators.pattern(environment.passwordRegex)]],
+        confirmedPassword: [null, [Validators.required, Validators.pattern(environment.passwordRegex)]],
       },
       {
         updateOn: 'blur',

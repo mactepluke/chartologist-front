@@ -16,6 +16,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatInput} from "@angular/material/input";
 import {MatDivider} from "@angular/material/divider";
+import {environment} from "../../../environments/environment";
 
 
 export interface User {
@@ -64,9 +65,10 @@ export class LoginPanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(environment.passwordRegex);
     this.form = this.formBuilder.group({
-      username: [null, [Validators.required, Validators.pattern('[A-Za-zÀ-ÿ- ]{3,50}$')]],
-      password: [null, [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&]).{8,30}')]],
+      username: [null, [Validators.required, Validators.pattern(environment.usernameRegex)]],
+      password: [null, [Validators.required, Validators.pattern(environment.passwordRegex)]],
     });
   }
 
