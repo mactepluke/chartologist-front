@@ -1,35 +1,44 @@
-<mat-card [formGroup]="form">
-  <mat-card-header>
-    <mat-card-title>Create account</mat-card-title>
-    <mat-card-subtitle>Create a new account or log in with an existing one</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="cardFieldRows">
-      <mat-form-field class="formFields">
-        <mat-label>Username</mat-label>
-        <input matInput formControlName="username">
-        <mat-hint>3-50 chars</mat-hint>
-      </mat-form-field>
-      <mat-form-field class="formFields">
-        <mat-label>Password</mat-label>
-        <input [type]="hide ? 'password' : 'text'" matInput formControlName="password">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+<div class="container">
+  <mat-card [formGroup]="form">
+    <mat-card-header>
+      <mat-card-title>Create account</mat-card-title>
+      <mat-card-subtitle>Create a new account or log in with an existing one</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <mat-form-field class="items">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username">
+          <mat-hint>3-50 chars</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="items">
+          <mat-label>Password</mat-label>
+          <input [type]="hide ? 'password' : 'text'" matInput formControlName="password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-hint>8-20 chars, > min. 1 upper c., lower c., num, special</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="items">
+          <mat-label>Password</mat-label>
+          <input [type]="hide ? 'password' : 'text'" matInput formControlName="confirmedPassword">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-hint>Please confirm password</mat-hint>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="container">
+        <button class="classic-buttons" mat-raised-button color="primary" [disabled]="form.invalid"
+                (click)="onCreate()">Create
         </button>
-        <mat-hint>8-20 chars, > min. 1 upper c., lower c., num, special</mat-hint>
-      </mat-form-field>
-      <mat-form-field class="formFields">
-        <mat-label>Password</mat-label>
-        <input [type]="hide ? 'password' : 'text'" matInput formControlName="confirmedPassword">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <button class="classic-buttons" mat-raised-button (click)="onLoginWithAccount()">Use an existing account
         </button>
-        <mat-hint>Please confirm password</mat-hint>
-      </mat-form-field>
-    </div>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onCreate()">Create</button>
-    <button mat-raised-button id="login" (click)="onLoginWithAccount()">Log in with an existing account</button>
-  </mat-card-actions>
-</mat-card>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

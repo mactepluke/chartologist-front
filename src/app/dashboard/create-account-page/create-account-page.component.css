@@ -1,14 +1,44 @@
-.cardFieldRows {
+mat-card {
+  margin-bottom: 30px;
+  width: 400px;
+  height: 550px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+mat-card-content {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
+  align-items: center;
 }
 
-.formFields {
-  margin-bottom: 30px;
+mat-card-actions {
+  position: absolute;
+  bottom: 30px;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
   width: 300px;
 }
 
-#login {
-  margin-left: 10px;
+div.container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
+
+.classic-buttons  {
+  margin-top: 30px;
+  width: 300px;
+}
+

@@ -15,6 +15,7 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatInput} from "@angular/material/input";
+import {MatDivider} from "@angular/material/divider";
 
 
 export interface User {
@@ -41,7 +42,8 @@ export interface User {
     RouterLink,
     MatIconButton,
     MatInput,
-    MatCard
+    MatCard,
+    MatDivider
   ],
   providers: [
     AuthService,

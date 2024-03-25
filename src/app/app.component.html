@@ -1,5 +1,5 @@
 @if (hasLanded) {
-  <sycm-navigation-menu></sycm-navigation-menu>
+  <sycm-navigation-menu [isLoggedIn]="isLoggedIn"></sycm-navigation-menu>
 } @else {
   <sycm-landing-page (hasLanded)="setHasLanded($event)"></sycm-landing-page>
 }

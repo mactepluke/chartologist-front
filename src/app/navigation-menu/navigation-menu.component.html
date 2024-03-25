@@ -5,7 +5,6 @@
                class="sidenav"
                fixedInViewport>
 
-
     <mat-nav-list>
 
       <a (click)="onSelectPage('backtesting'); handsetState ? drawer.toggle() : ''" mat-list-item>
@@ -43,7 +42,7 @@
       </a>
 
       <a (click)="onSelectPage('contact'); handsetState ? drawer.toggle() : ''" mat-list-item>
-        <div class="container" >
+        <div class="container">
           <mat-icon class="nav-icon">alternate_email</mat-icon>
           <div class="items">CONTACT</div>
         </div>
@@ -65,15 +64,19 @@
 
       <div class="horizontal-container" (click)="onSelectPage('home')">
         <sycm-app-icon class="icon" iconName="APP_ICON"></sycm-app-icon>
-      <h1 [textContent]="(environment.app_name | titlecase) + '_'" id="title"></h1>
+        <h1 [textContent]="(environment.app_name | titlecase) + '_'" id="title"></h1>
       </div>
       <div>
         @if (isHandset$ | async) {
           <mat-icon (click)="onSelectPage('dashboard')" class="account-icon">account_circle</mat-icon>
-        }
-        @else {
-        <button (click)="onSelectPage('dashboard')" class="toolbar-button" mat-button>Sign in</button>
-        <button (click)="onSelectPage('create-account')" class="toolbar-button" color="accent" mat-button>Sign up</button>
+        } @else {
+          @if (isLoggedIn) {
+            <button (click)="onSelectPage('dashboard')" class="toolbar-button" mat-button>Dashboard</button>
+          } @else {
+            <button (click)="onSelectPage('dashboard')" class="toolbar-button" mat-button>Log In</button>
+            <button (click)="onSelectPage('create-account')" class="toolbar-button" color="accent" mat-button>Sign Up
+            </button>
+          }
         }
       </div>
     </mat-toolbar>
