@@ -8,6 +8,10 @@ export class DisplayService {
   constructor(private snackBar: MatSnackBar) {
   }
 
+  refreshPage(): void {
+    window.location.reload();
+  }
+
   openSnackBar(message: string): void {
     this.snackBar.openFromComponent(SnackBarComponent, {
       duration: 3000,

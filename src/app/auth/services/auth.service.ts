@@ -9,13 +9,11 @@ import {shareReplay} from "rxjs/operators";
 
 @Injectable()
 export class AuthService {
-
   constructor(
     private http: HttpClient,
     private jwtHelper: JwtHelperService
   ) {
   }
-
   createUser(user: User): Observable<User> {
     return this.http.post<User>(`${environment.backend_address}/user/create`,
       {
@@ -60,7 +58,7 @@ export class AuthService {
     localStorage.removeItem('username');
   }
 
-  public isLoggedIn(): boolean {
+  isLoggedIn(): boolean {
     return moment().isBefore(this.getExpiration());
   }
 

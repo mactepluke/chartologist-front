@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input, OnInit} from '@angular/core';
+import {Component, inject, Input, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {AsyncPipe, TitleCasePipe, UpperCasePipe} from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -11,6 +11,7 @@ import {map, shareReplay} from 'rxjs/operators';
 import {Router, RouterOutlet} from "@angular/router";
 import {AppIconComponent} from "../core/app-icon/app-icon.component";
 import {environment} from "../../environments/environment";
+import {AuthService} from "../auth/services/auth.service";
 
 @Component({
   selector: 'sycm-navigation-menu',
@@ -27,7 +28,10 @@ import {environment} from "../../environments/environment";
     RouterOutlet,
     AppIconComponent,
     UpperCasePipe,
-    TitleCasePipe,
+    TitleCasePipe
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class NavigationMenuComponent implements OnInit {
@@ -42,12 +46,12 @@ export class NavigationMenuComponent implements OnInit {
   @Input()
   isLoggedIn!: boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthService) {
   }
 
   ngOnInit(): void {
-        this.handsetState = this.isHandset();
-    }
+    this.handsetState = this.isHandset();
+  }
 
   protected onSelectPage(page: string) {
     this.router.navigate([page]);
