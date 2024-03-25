@@ -48,6 +48,11 @@ export const routes: Routes = [
     loadComponent: () => import('./dashboard/create-account-page/create-account-page.component').then(module => module.CreateAccountPageComponent)
   },
   {
+    path: 'app',
+    title: 'App',
+    loadComponent: () => import('./app.component').then(module => module.AppComponent)
+  },
+  {
     path: '**',
     title: 'Home',
     loadComponent: () => import('./home/home-page/home-page.component').then(module => module.HomePageComponent)

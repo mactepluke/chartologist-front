@@ -14,7 +14,7 @@ import {
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
-import {MatInput} from "@angular/material/input";
+import {MatInput, MatInputModule} from "@angular/material/input";
 import {MatDivider} from "@angular/material/divider";
 import {environment} from "../../../environments/environment";
 
@@ -44,7 +44,8 @@ export interface User {
     MatIconButton,
     MatInput,
     MatCard,
-    MatDivider
+    MatDivider,
+    MatInputModule
   ],
   providers: [
     AuthService,
@@ -79,7 +80,7 @@ export class LoginPanelComponent implements OnInit {
       {
         next: () => {
           this.isLoggedIn.emit(this.authService.isLoggedIn());
-          this.displayService.openSnackBar(`User \'${this.user.username}\' is logged in!`);
+          this.displayService.openSnackBar(`User \'${this.user.username}\' is logged in!`)
           this.displayService.refreshPage();
         },
         error: () => {

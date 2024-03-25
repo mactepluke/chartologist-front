@@ -29,9 +29,6 @@ import {AuthService} from "../auth/services/auth.service";
     AppIconComponent,
     UpperCasePipe,
     TitleCasePipe
-  ],
-  providers: [
-    AuthService
   ]
 })
 export class NavigationMenuComponent implements OnInit {
@@ -46,7 +43,7 @@ export class NavigationMenuComponent implements OnInit {
   @Input()
   isLoggedIn!: boolean;
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {

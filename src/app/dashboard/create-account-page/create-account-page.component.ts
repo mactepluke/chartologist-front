@@ -18,7 +18,7 @@ import {
 } from "@angular/material/card";
 import {MatFormField, MatHint, MatLabel} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
-import {MatInput} from "@angular/material/input";
+import {MatInput, MatInputModule} from "@angular/material/input";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {Router} from "@angular/router";
 import {AuthService} from "../../auth/services/auth.service";
@@ -43,7 +43,8 @@ import {environment} from "../../../environments/environment";
     MatCardActions,
     MatButton,
     MatLabel,
-    MatHint
+    MatHint,
+    MatInputModule
   ],
   providers: [
     AuthService,

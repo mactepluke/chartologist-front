@@ -14,9 +14,8 @@
         <mat-form-field class="items">
           <mat-label>Password</mat-label>
           <input [type]="hide ? 'password' : 'text'" matInput formControlName="password">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hide">
-            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
           <mat-hint>8-20 chars, > 1 upper case, lower case and num.</mat-hint>
         </mat-form-field>
