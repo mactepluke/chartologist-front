@@ -28,7 +28,9 @@ export class DisclaimerDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.overlayContainer.getContainerElement().classList.add(this.displayService.isLightModeEnabled() ? 'lightMode' : 'darkMode');
+    this.displayService.getLightModeSubject().subscribe((isLightModeEnabled: boolean) => {
+      this.overlayContainer.getContainerElement().classList.add(isLightModeEnabled ? 'lightMode' : 'darkMode');
+    });
   }
 
 }

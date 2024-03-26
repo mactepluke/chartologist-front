@@ -47,10 +47,6 @@ import {exhaustMap, retry, Subject} from "rxjs";
     MatHint,
     MatInputModule
   ],
-  providers: [
-    AuthService,
-    DisplayService
-  ],
   templateUrl: './create-account-page.component.html',
   styleUrl: './create-account-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

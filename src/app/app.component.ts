@@ -24,10 +24,13 @@ export class AppComponent implements OnInit {
   }
 
   @HostBinding('class')
-  className!: string;
+  className: string = 'darkMode';
 
   ngOnInit(): void {
-    this.className = this.displayService.isLightModeEnabled() ? 'lightMode' : 'darkMode';
+    this.displayService.getLightModeSubject().subscribe((isLightModeEnabled: boolean) => {
+      this.className = isLightModeEnabled ? 'lightMode' : 'darkMode';
+    });
+
     this.isLoggedIn = this.authService.isLoggedIn();
     this.hasLanded = this.isLoggedIn;
   }

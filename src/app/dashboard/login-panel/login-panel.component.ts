@@ -44,7 +44,6 @@ import {User} from "../../auth/models/User";
     MatInputModule
   ],
   providers: [
-    AuthService,
     FormBuilder
   ],
   templateUrl: './login-panel.component.html',
