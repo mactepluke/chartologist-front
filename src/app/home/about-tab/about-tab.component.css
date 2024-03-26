@@ -26,7 +26,6 @@ p {
 }
 
 img {
-  opacity: 0.8;
   object-fit: cover;
   filter: saturate(0.7);
 }

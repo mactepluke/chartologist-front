@@ -5,7 +5,6 @@ import {
   FormGroup,
   ReactiveFormsModule,
   ValidationErrors,
-  Validators,
   ValidatorFn
 } from "@angular/forms";
 import {
@@ -24,8 +23,8 @@ import {Router} from "@angular/router";
 import {AuthService} from "../../auth/services/auth.service";
 import {User} from "../../auth/models/User";
 import {DisplayService} from "../../shared_services/display.service";
-import {environment} from "../../../environments/environment";
 import {exhaustMap, retry, Subject} from "rxjs";
+import {UserService} from "../../shared_services/user.service";
 
 @Component({
   selector: 'sycm-create-account-page',
@@ -47,6 +46,9 @@ import {exhaustMap, retry, Subject} from "rxjs";
     MatHint,
     MatInputModule
   ],
+  providers: [
+    UserService
+  ],
   templateUrl: './create-account-page.component.html',
   styleUrl: './create-account-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -56,15 +58,11 @@ export class CreateAccountPageComponent implements OnInit, OnDestroy {
   hide = true;
   createRequest$: Subject<User> = new Subject<User>();
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private displayService: DisplayService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private displayService: DisplayService, private userService: UserService) {
   }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-        username: [null, [Validators.required, Validators.pattern(environment.usernameRegex)]],
-        password: [null, [Validators.required, Validators.pattern(environment.passwordRegex)]],
-        confirmedPassword: [null, [Validators.required, Validators.pattern(environment.passwordRegex)]],
-      },
+    this.form = this.formBuilder.group(this.userService.getFormControls(),
       {
         updateOn: 'blur',
         validators: this.checkPasswords

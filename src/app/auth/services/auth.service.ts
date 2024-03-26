@@ -3,16 +3,19 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import moment from 'moment';
 import {User} from "../models/User";
-import {Observable, tap} from "rxjs";
+import {BehaviorSubject, Observable, tap} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {shareReplay} from "rxjs/operators";
 
 @Injectable()
 export class AuthService {
+  private readonly isLoggedInSubject: BehaviorSubject<boolean>
+
   constructor(
     private http: HttpClient,
     private jwtHelper: JwtHelperService
   ) {
+    this.isLoggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
   }
   createUser(user: User): Observable<User> {
     return this.http.post<User>(`${environment.backend_address}/user/create`,
@@ -24,7 +27,6 @@ export class AuthService {
 
   login(user: User): Observable<HttpResponse<User>> {
 
-    this.logout();
     localStorage.setItem("userdetails", JSON.stringify(user));
 
     return this.http.get<User>(`${environment.backend_address}/user/login`, {
@@ -32,9 +34,7 @@ export class AuthService {
     }).pipe(
       tap((res ) => {
           const jwtToken = res.headers.get('Authorization');
-
           if (jwtToken) {
-            localStorage.setItem("jwtToken", jwtToken);
             this.setSession(jwtToken);
           }
         }
@@ -50,12 +50,20 @@ export class AuthService {
     localStorage.setItem('jwtToken', jwtToken);
     localStorage.setItem('username', decodedToken.sub)
     localStorage.setItem('expires_at', JSON.stringify(decodedToken.exp));
+
+    this.updateIsLoggedInSubject();
   }
 
   logout(): void {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('expires_at');
     localStorage.removeItem('username');
+
+    this.updateIsLoggedInSubject();
+  }
+
+  private updateIsLoggedInSubject() : void {
+    this.isLoggedInSubject.next(this.isLoggedIn());
   }
 
   isLoggedIn(): boolean {
@@ -71,6 +79,10 @@ export class AuthService {
   getUsername(): string {
     let username = localStorage.getItem('username');
     return username === null ? '' : username;
+  }
+
+  getIsLoggedInSubject(): BehaviorSubject<boolean> {
+    return this.isLoggedInSubject;
   }
 
 }

@@ -8,7 +8,7 @@
     <mat-nav-list>
 
       <div class="container">
-        <mat-slide-toggle [checked]="isLightModeEnabled" id="lightModeToggle" color="accent"
+        <mat-slide-toggle [disabled]="false" [checked]="isLightModeEnabled" id="lightModeToggle" color="accent"
                           (click)="onEnableLightMode()"></mat-slide-toggle>
         <div class="items">LIGHT MODE</div>
       </div>
@@ -78,7 +78,7 @@
         @if (isHandset$ | async) {
           <mat-icon (click)="onSelectPage('dashboard')" class="account-icon">account_circle</mat-icon>
         } @else {
-          @if (isLoggedIn) {
+          @if (isLoggedInSubject$ | async) {
             <button (click)="onSelectPage('dashboard')" class="toolbar-button" mat-button>Dashboard</button>
           } @else {
             <button (click)="onSelectPage('dashboard')" class="toolbar-button" mat-button>Log In</button>

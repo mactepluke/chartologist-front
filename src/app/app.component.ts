@@ -9,16 +9,12 @@ import {DisplayService} from "./shared_services/display.service";
   selector: 'sycm-root',
   standalone: true,
   imports: [RouterOutlet, NavigationMenuComponent, LandingPageComponent],
-  providers: [
-    AuthService
-  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
   protected hasLanded = false;
-  protected isLoggedIn = false;
 
   constructor(private authService: AuthService, private displayService: DisplayService) {
   }
@@ -30,9 +26,7 @@ export class AppComponent implements OnInit {
     this.displayService.getLightModeSubject().subscribe((isLightModeEnabled: boolean) => {
       this.className = isLightModeEnabled ? 'lightMode' : 'darkMode';
     });
-
-    this.isLoggedIn = this.authService.isLoggedIn();
-    this.hasLanded = this.isLoggedIn;
+    this.hasLanded = this.authService.isLoggedIn();
   }
 
   setHasLanded($event: boolean) {

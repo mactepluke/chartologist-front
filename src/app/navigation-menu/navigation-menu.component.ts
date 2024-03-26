@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {AsyncPipe, TitleCasePipe, UpperCasePipe} from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -6,13 +6,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 import {Router, RouterOutlet} from "@angular/router";
 import {AppIconComponent} from "../core/app-icon/app-icon.component";
 import {environment} from "../../environments/environment";
 import {MatSlideToggle} from "@angular/material/slide-toggle";
 import {DisplayService} from "../shared_services/display.service";
+import {AuthService} from "../auth/services/auth.service";
 
 @Component({
   selector: 'sycm-navigation-menu',
@@ -31,7 +32,8 @@ import {DisplayService} from "../shared_services/display.service";
     UpperCasePipe,
     TitleCasePipe,
     MatSlideToggle
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavigationMenuComponent implements OnInit {
   protected readonly environment = environment;
@@ -42,16 +44,16 @@ export class NavigationMenuComponent implements OnInit {
       shareReplay()
     );
   protected handsetState!: boolean;
-  @Input()
-  isLoggedIn!: boolean;
   isLightModeEnabled!: boolean;
+  isLoggedInSubject$!: BehaviorSubject<boolean>;
 
-  constructor(private router: Router, private displayService: DisplayService) {
+  constructor(private router: Router, private displayService: DisplayService, private authService: AuthService) {
   }
 
   ngOnInit(): void {
     this.handsetState = this.isHandset();
     this.isLightModeEnabled = this.displayService.isLightModeEnabled();
+    this.isLoggedInSubject$ = this.authService.getIsLoggedInSubject();
   }
 
   protected onSelectPage(page: string) {

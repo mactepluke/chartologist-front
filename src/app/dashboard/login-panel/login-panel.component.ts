@@ -73,7 +73,6 @@ export class LoginPanelComponent implements OnInit, OnDestroy {
         next: (user) => {
           this.isLoggedIn.emit(this.authService.isLoggedIn());
           this.displayService.openSnackBar(`User \'${user.body?.username}\' is logged in!`)
-          this.displayService.refreshPage();
         },
         error: (error) => {
           console.log(error);
@@ -87,6 +86,7 @@ export class LoginPanelComponent implements OnInit, OnDestroy {
   }
 
   onLogin() : void {
+    console.log(this.form.value);
     this.loginRequest$.next(this.form.value);
   }
 

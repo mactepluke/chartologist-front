@@ -13,12 +13,17 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   if (jwtToken) {
     httpHeaders = httpHeaders.append('Authorization', `Bearer ${jwtToken}`);
   } else if (user && user.username) {
-    httpHeaders = httpHeaders.append('Authorization', 'Basic ' + window.btoa(user.username + ':' + user.password));
+
+    let encoder = new TextEncoder();
+    let utf8Password = encoder.encode(user.password);
+    let passwordString = String.fromCharCode.apply(null, Array.from(utf8Password));
+    httpHeaders = httpHeaders.append('Authorization', 'Basic ' + window.btoa(user.username + ':' + passwordString));
+
     localStorage.removeItem('userdetails');
   }
-
   const modifiedReq = req.clone({
     headers: httpHeaders
   });
+
   return next(modifiedReq);
 };
