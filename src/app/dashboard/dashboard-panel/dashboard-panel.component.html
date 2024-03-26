@@ -1,6 +1,9 @@
 <mat-card [formGroup]="form">
     <mat-card-header>
-        <mat-card-title>Account</mat-card-title>
+        <mat-card-title>Account Information</mat-card-title>
+      <mat-card-subtitle>
+        You must type your password again to save the information settings
+      </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <div>
@@ -30,6 +33,6 @@
     </mat-card-content>
 </mat-card>
 
-<button id="logout" mat-raised-button (click)="onLogout()">Log Out</button>
+<button id="logout" color="accent" mat-raised-button (click)="onLogout()">Log Out</button>
 <button mat-raised-button (click)="resetForm()" type="submit">Reset</button>
-<button mat-raised-button type="submit">Save Settings</button>
+<button mat-raised-button color="primary" (click)="onUpdateAccountSettings()" type="submit" [disabled]="form.invalid">Update Settings</button>

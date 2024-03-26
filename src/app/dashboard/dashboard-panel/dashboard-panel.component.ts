@@ -24,6 +24,14 @@ import {MatFormField, MatHint, MatLabel, MatSuffix} from "@angular/material/form
 import {MatIcon} from "@angular/material/icon";
 import {MatInput, MatInputModule} from "@angular/material/input";
 import {AsyncPipe} from "@angular/common";
+import {exhaustMap, retry, Subject} from "rxjs";
+import {DisplayService} from "../../shared_services/display.service";
+import {Router} from "@angular/router";
+
+export interface UserToUpdate {
+  username: string;
+  user: User;
+}
 
 @Component({
   selector: 'sycm-dashboard-panel',
@@ -60,9 +68,10 @@ export class DashboardPanelComponent implements OnInit {
   user!: User;
   form!: FormGroup;
   hide = true;
+  subjectRequest$: any = new Subject<UserToUpdate>();
 
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private userService: UserService) {
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private userService: UserService, private router: Router, private displayService: DisplayService) {
     this.user = new User();
   }
 
@@ -71,6 +80,22 @@ export class DashboardPanelComponent implements OnInit {
       this.user = user;
       this.resetForm()
     });
+
+    this.subjectRequest$.pipe(
+      exhaustMap((userToUpdate: UserToUpdate) => this.userService.updateUser(userToUpdate.username, userToUpdate.user)), retry()
+    ).subscribe(
+      {
+        next: (user: User) => {
+          this.user = user;
+          this.resetForm();
+          this.displayService.openSnackBar(`User \'${user.username}\' has been updated!`);
+        },
+        error: (error: Error) => {
+          console.log(error);
+          this.displayService.openSnackBar('Could not update user.')
+        }
+      }
+    );
 
     this.form = this.formBuilder.group(this.userService.getFormControls(),
       {
@@ -83,7 +108,7 @@ export class DashboardPanelComponent implements OnInit {
     console.log(this.user.username);
     this.form.setValue({
       username: this.user.username,
-      password: this.user.password,
+      password: '',
       confirmedPassword: ''
     });
   }
@@ -93,11 +118,19 @@ export class DashboardPanelComponent implements OnInit {
     this.isLoggedIn.emit(this.authService.isLoggedIn())
   }
 
+  onUpdateAccountSettings() : void  {
+    this.subjectRequest$.next({
+      username: this.user.username,
+      user: this.form.value
+    });
+  }
+
   checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
     // @ts-ignore
     let pass = group.get('password').value;
     // @ts-ignore
     let confirmPass = group.get('confirmedPassword').value;
-    return pass === confirmPass ? null : {notSame: true}
+
+    return (pass === confirmPass) ? null : {notSame: true}
   }
 }

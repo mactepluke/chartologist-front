@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {User} from "../auth/models/User";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Validators} from "@angular/forms";
@@ -15,6 +15,19 @@ export class UserService {
 
   findUser(username: string): Observable<User> {
     return this.http.get<User>(`${environment.backend_address}/user/get?username=${username}`);
+  }
+
+  updateUser(username: string, user: User): Observable<User> {
+    return this.http.put<User>(`${environment.backend_address}/user/update?username=${username}`, {
+      "username": `${user.username}`,
+      "password": `${user.password}`
+    }).pipe(
+      tap(
+        (updatedUser : User) => {
+          localStorage.setItem('username', updatedUser.username);
+        }
+      )
+    );
   }
 
   getFormControls() {
