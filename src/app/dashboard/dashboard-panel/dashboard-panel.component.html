@@ -6,7 +6,7 @@
     <mat-card-content>
       <form class="example-form" [formGroup]="formGroup" (ngSubmit)="alertFormValues(formGroup)" ngNativeValidate>
 
-        <mat-slide-toggle color="primary" (click)="onEnableLightMode()">Light Mode</mat-slide-toggle>
+        <mat-slide-toggle color="primary">Light Mode</mat-slide-toggle>
         <mat-slide-toggle color="primary" formControlName="acceptTerms">Accept Terms of Service</mat-slide-toggle>
 
         <p>Form Group Status: {{formGroup.status}}</p>

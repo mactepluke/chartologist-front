@@ -18,9 +18,11 @@ mat-card-content {
 }
 
 mat-card-actions {
-  position: absolute;
-  right: 42px;
-  bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  align-items: center;
+  justify-items: center;
 }
 
 .items {
@@ -54,4 +56,8 @@ p {
   height: 0;
   width: 100% !important;
   position: inherit !important;
+}
+
+#login-button {
+  margin-top: 18px;
 }

@@ -11,7 +11,8 @@ import {map, shareReplay} from 'rxjs/operators';
 import {Router, RouterOutlet} from "@angular/router";
 import {AppIconComponent} from "../core/app-icon/app-icon.component";
 import {environment} from "../../environments/environment";
-import {AuthService} from "../auth/services/auth.service";
+import {MatSlideToggle} from "@angular/material/slide-toggle";
+import {DisplayService} from "../shared_services/display.service";
 
 @Component({
   selector: 'sycm-navigation-menu',
@@ -28,7 +29,8 @@ import {AuthService} from "../auth/services/auth.service";
     RouterOutlet,
     AppIconComponent,
     UpperCasePipe,
-    TitleCasePipe
+    TitleCasePipe,
+    MatSlideToggle
   ]
 })
 export class NavigationMenuComponent implements OnInit {
@@ -42,12 +44,14 @@ export class NavigationMenuComponent implements OnInit {
   protected handsetState!: boolean;
   @Input()
   isLoggedIn!: boolean;
+  isLightModeEnabled!: boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private displayService: DisplayService) {
   }
 
   ngOnInit(): void {
     this.handsetState = this.isHandset();
+    this.isLightModeEnabled = this.displayService.isLightModeEnabled();
   }
 
   protected onSelectPage(page: string) {
@@ -58,4 +62,14 @@ export class NavigationMenuComponent implements OnInit {
     return this.breakpointObserver.isMatched(Breakpoints.Handset);
   }
 
+    onEnableLightMode() {
+      if (this.isLightModeEnabled) {
+        this.displayService.disableLightMode();
+        this.isLightModeEnabled = false;
+      } else {
+        this.displayService.enableLightMode();
+        this.isLightModeEnabled = true;
+      }
+
+  }
 }

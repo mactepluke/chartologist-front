@@ -7,6 +7,14 @@
 
     <mat-nav-list>
 
+      <div class="container">
+        <mat-slide-toggle [checked]="isLightModeEnabled" id="lightModeToggle" color="accent"
+                          (click)="onEnableLightMode()"></mat-slide-toggle>
+        <div class="items">LIGHT MODE</div>
+      </div>
+
+      <mat-divider></mat-divider>
+
       <a (click)="onSelectPage('backtesting'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
           <mat-icon class="nav-icon">bar_chart</mat-icon>

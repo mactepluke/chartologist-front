@@ -96,3 +96,13 @@ h1  {
 .nav-icon {
   margin-top: 8px;
 }
+
+#lightModeToggle {
+  margin-bottom: 20px;
+}
+
+mat-divider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}

@@ -52,12 +52,4 @@ export class DashboardPanelComponent {
     this.isLoggedIn.emit(this.authService.isLoggedIn())
     this.displayService.refreshPage();
   }
-
-  onEnableLightMode() {
-    if (this.displayService.isLightModeEnabled()) {
-      this.displayService.disableLightMode();
-    } else {
-      this.displayService.enableLightMode();
-    }
-  }
 }
