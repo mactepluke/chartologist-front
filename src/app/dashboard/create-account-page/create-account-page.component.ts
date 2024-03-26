@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -25,6 +25,7 @@ import {AuthService} from "../../auth/services/auth.service";
 import {User} from "../../auth/models/User";
 import {DisplayService} from "../../shared_services/display.service";
 import {environment} from "../../../environments/environment";
+import {exhaustMap, retry, Subject} from "rxjs";
 
 @Component({
   selector: 'sycm-create-account-page',
@@ -54,9 +55,10 @@ import {environment} from "../../../environments/environment";
   styleUrl: './create-account-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CreateAccountPageComponent implements OnInit {
+export class CreateAccountPageComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   hide = true;
+  createRequest$: Subject<User> = new Subject<User>();
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private displayService: DisplayService) {
   }
@@ -71,6 +73,26 @@ export class CreateAccountPageComponent implements OnInit {
         updateOn: 'blur',
         validators: this.checkPasswords
       });
+
+      this.createRequest$.pipe(
+        exhaustMap((user: User) => this.authService.createUser(user)), retry()
+      ).subscribe(
+        {
+          next: (user) => {
+            this.authService.logout();
+            this.router.navigate(['dashboard'])
+              .then(() => this.displayService.openSnackBar(`User \'${user.username}\' has been created!`))
+          },
+          error: (error) => {
+            console.log(error);
+            this.displayService.openSnackBar('Could not create user.')
+          }
+        }
+      );
+  }
+
+  ngOnDestroy() {
+    this.createRequest$.complete();
   }
 
   checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
@@ -83,18 +105,7 @@ export class CreateAccountPageComponent implements OnInit {
 
 
   onCreate() {
-    let user: User = this.form.value;
-
-    this.authService.createUser(user)
-      .subscribe({
-          next: (user) => {
-            this.authService.logout();
-            this.router.navigate(['dashboard'])
-              .then(() => this.displayService.openSnackBar(`User \'${user.username}\' has been created!`))
-          },
-          error: () => this.displayService.openSnackBar(`Could not create user with username: \'${user.username}\'`)
-        }
-      )
+    this.createRequest$.next(this.form.value);
   }
 
   onLoginWithAccount() {

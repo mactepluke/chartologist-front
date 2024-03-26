@@ -83,8 +83,8 @@ h1  {
   justify-content: space-between;
 }
 
-toolbar-button {
-  font-size: 16px;
+.toolbar-button {
+  width: 80px;
   margin-left: 5px;
 }
 
