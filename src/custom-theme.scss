@@ -35,17 +35,31 @@ $chartomancer-front-theme: mat.define-dark-theme((
   typography: $chartomancer-front-typography
 ));
 
-/*$chartomancer-front-theme: mat.define-light-theme((
+$chartomancer-front-light-theme: mat.define-light-theme((
   color: (
     primary: $chartomancer-front-primary,
     accent: $chartomancer-front-accent,
     warn: $chartomancer-front-warn,
   ),
   typography: $chartomancer-front-typography
-));*/
+));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
+
+/*.darkMode {
+  @include mat.all-component-themes($chartomancer-front-theme);
+  @include landing.background-color($chartomancer-front-theme);
+}*/
+
+
+
 @include mat.all-component-themes($chartomancer-front-theme);
 @include landing.background-color($chartomancer-front-theme);
+
+
+.lightMode {
+  @include mat.all-component-themes($chartomancer-front-light-theme);
+}
+
