@@ -17,8 +17,9 @@
           <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
       </mat-form-field>
+        <mat-checkbox class="items" formControlName="rememberMe">Remember me</mat-checkbox>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions class="login-actions">
         <button id="login-button" class="classic-buttons" mat-raised-button color="primary" [disabled]="form.invalid" (click)="onLogin()">
           Log In
         </button>
@@ -47,7 +48,7 @@
         <p><b>Custom</b> account settings</p>
       </div>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions class="new-users-actions">
       <button class="classic-buttons" routerLink="../create-account" routerLinkActive="active"
               [routerLinkActiveOptions]="{exact: true }"
               mat-raised-button color="primary">Create an Account

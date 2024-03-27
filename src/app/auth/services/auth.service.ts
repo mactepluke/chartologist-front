@@ -10,6 +10,7 @@ import {shareReplay} from "rxjs/operators";
 @Injectable()
 export class AuthService {
   private readonly isLoggedInSubject: BehaviorSubject<boolean>
+  private storage: Storage = sessionStorage;
 
   constructor(
     private http: HttpClient,
@@ -17,6 +18,7 @@ export class AuthService {
   ) {
     this.isLoggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
   }
+
   createUser(user: User): Observable<User> {
     return this.http.post<User>(`${environment.backend_address}/user/create`,
       {
@@ -27,12 +29,16 @@ export class AuthService {
 
   login(user: User): Observable<HttpResponse<User>> {
 
-    localStorage.setItem("userdetails", JSON.stringify(user));
+    if (user.rememberMe) {
+      this.useRememberMeStorage()
+    }
+
+    this.accessStorage().setItem("userdetails", JSON.stringify(user));
 
     return this.http.get<User>(`${environment.backend_address}/user/login`, {
       observe: 'response', withCredentials: true
     }).pipe(
-      tap((res ) => {
+      tap((res) => {
           const jwtToken = res.headers.get('Authorization');
           if (jwtToken) {
             this.setSession(jwtToken);
@@ -43,26 +49,42 @@ export class AuthService {
     );
   }
 
+  accessStorage(): Storage {
+    return this.storage;
+  }
+
+  private resetToDefaultStorage(): void {
+    this.storage = sessionStorage;
+  }
+
+  private useRememberMeStorage(): void {
+    this.storage = localStorage;
+  }
+
   private setSession(jwtToken: string) {
 
     const decodedToken = this.jwtHelper.decodeToken(jwtToken);
 
-    localStorage.setItem('jwtToken', jwtToken);
-    localStorage.setItem('username', decodedToken.sub)
-    localStorage.setItem('expires_at', JSON.stringify(decodedToken.exp));
+    this.accessStorage().setItem('jwtToken', jwtToken);
+    this.accessStorage().setItem('username', decodedToken.sub)
+    this.accessStorage().setItem('expires_at', JSON.stringify(decodedToken.exp));
 
     this.updateIsLoggedInSubject();
   }
 
   logout(): void {
-    localStorage.removeItem('jwtToken');
-    localStorage.removeItem('expires_at');
-    localStorage.removeItem('username');
-
+    this.cleanUpStorage();
     this.updateIsLoggedInSubject();
+    this.resetToDefaultStorage();
   }
 
-  private updateIsLoggedInSubject() : void {
+  private cleanUpStorage(): void {
+    this.accessStorage().removeItem('jwtToken');
+    this.accessStorage().removeItem('expires_at');
+    this.accessStorage().removeItem('username');
+  }
+
+  private updateIsLoggedInSubject(): void {
     this.isLoggedInSubject.next(this.isLoggedIn());
   }
 
@@ -71,13 +93,13 @@ export class AuthService {
   }
 
   getExpiration(): moment.Moment {
-    const expiration: string | null = localStorage.getItem('expires_at');
+    const expiration: string | null = this.accessStorage().getItem('expires_at');
     const expiresAt = expiration === null ? 0 : JSON.parse(expiration);
     return moment(expiresAt * 1000);
   }
 
   getUsername(): string {
-    let username = localStorage.getItem('username');
+    let username = this.accessStorage().getItem('username');
     return username === null ? '' : username;
   }
 

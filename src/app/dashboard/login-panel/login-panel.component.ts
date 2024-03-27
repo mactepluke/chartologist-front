@@ -19,6 +19,7 @@ import {MatDivider} from "@angular/material/divider";
 import {environment} from "../../../environments/environment";
 import {exhaustMap, retry, Subject} from "rxjs";
 import {User} from "../../auth/models/User";
+import {MatCheckbox} from "@angular/material/checkbox";
 
 
 @Component({
@@ -41,7 +42,8 @@ import {User} from "../../auth/models/User";
     MatInput,
     MatCard,
     MatDivider,
-    MatInputModule
+    MatInputModule,
+    MatCheckbox
   ],
   providers: [
     FormBuilder
@@ -64,6 +66,7 @@ export class LoginPanelComponent implements OnInit, OnDestroy {
     this.form = this.formBuilder.group({
       username: [null, [Validators.required, Validators.pattern(environment.usernameRegex)]],
       password: [null, [Validators.required, Validators.pattern(environment.passwordRegex)]],
+      rememberMe: [false]
     });
 
     this.loginRequest$.pipe(

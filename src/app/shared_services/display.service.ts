@@ -33,10 +33,6 @@ export class DisplayService {
     return this.lightModeEnabled$;
   }
 
-  refreshPage(): void {
-    window.location.reload();
-  }
-
   openSnackBar(message: string): void {
     this.snackBar.openFromComponent(SnackBarComponent, {
       duration: 3000,

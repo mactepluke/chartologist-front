@@ -20,10 +20,17 @@ mat-card-content {
 mat-card-actions {
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
   align-items: center;
   justify-items: center;
   margin-bottom: 20px;
+}
+
+mat-card-actions.login-actions  {
+  margin-top: 10px;
+}
+
+mat-card-actions.new-users-actions  {
+  margin-top: 70px;
 }
 
 .items {
