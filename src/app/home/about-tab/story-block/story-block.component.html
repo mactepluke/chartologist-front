@@ -1,0 +1,28 @@
+<div class="block-container">
+  @if (textFirst) {
+    <div class="block">
+      <div>
+        <h2>{{ content.title }}</h2>
+        <p>{{ content.firstParagraph }}</p>
+        <p>{{ content.secondParagraph }}</p>
+        <p>{{ content.thirdParagraph }}</p>
+      </div>
+    </div>
+    <div class="block">
+      <img class="block" alt="StoryBlock" [src]="content.imagePath" width=auto>
+    </div>
+  } @else {
+    <div class="block">
+      <img class="block" alt="StoryBlock" [src]="content.imagePath" width=auto>
+    </div>
+    <div class="block">
+      <div>
+        <h2>{{ content.title }}</h2>
+        <p>{{ content.firstParagraph }}</p>
+        <p>{{ content.secondParagraph }}</p>
+        <p>{{ content.thirdParagraph }}</p>
+      </div>
+    </div>
+  }
+</div>
+

@@ -1,7 +1,7 @@
 <div class="page-elements">
-  <img alt="Another Dimension" src="/assets/chartologist another dimension 3 thin.jpg" width=auto>
+  <img class="banner" alt="Another Dimension" src="/assets/chartologist yet another dimension reduced.jpg" width=auto>
 
-  <div class="text-container">
+  <div class="container">
     <div class="inverse-fade-one">
       <h1>Move your trading into another dimension.</h1>
     </div>
@@ -13,5 +13,19 @@
         insights into what it believes is more probable to occur.
       </p>
     </div>
+
+    <div class="story-blocks">
+      <sycm-story-block class="inverse-fade-three" [textFirst]="false" [content]="firstBlockContent"></sycm-story-block>
+      <mat-divider></mat-divider>
+      <sycm-story-block class="inverse-fade-three" [textFirst]="true" [content]="secondBlockContent"></sycm-story-block>
+      <mat-divider></mat-divider>
+      <sycm-story-block class="inverse-fade-three" [textFirst]="false" [content]="thirdBlockContent"></sycm-story-block>
+      <mat-divider></mat-divider>
+      <sycm-story-block class="inverse-fade-three" [textFirst]="true" [content]="fourthBlockContent"></sycm-story-block>
+    </div>
+
   </div>
+
 </div>
+
+
