@@ -29,6 +29,28 @@ div.block {
   margin-right: 30px;
 }
 
+div.right-text-margin {
+  margin-right: 30px;
+}
+
+div.left-text-margin {
+  margin-left: 30px;
+}
+
+@media (hover: none) {
+  div.right-text-margin {
+    margin-left: 30px;
+  }
+
+  div.left-text-margin {
+    margin-right: 30px;
+  }
+
+  div.block-container {
+    margin-bottom: 20px;
+  }
+}
+
 div.block-container {
   display: flex;
   flex-direction: row;

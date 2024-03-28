@@ -2,10 +2,12 @@
   @if (textFirst) {
     <div class="block">
       <div>
+        <div class="right-text-margin">
         <h2>{{ content.title }}</h2>
         <p>{{ content.firstParagraph }}</p>
         <p>{{ content.secondParagraph }}</p>
         <p>{{ content.thirdParagraph }}</p>
+        </div>
       </div>
     </div>
     <div class="block">
@@ -16,7 +18,7 @@
       <img class="block" alt="StoryBlock" [src]="content.imagePath" width=auto>
     </div>
     <div class="block">
-      <div class="text-margins">
+      <div class="left-text-margin">
         <h2>{{ content.title }}</h2>
         <p>{{ content.firstParagraph }}</p>
         <p>{{ content.secondParagraph }}</p>
