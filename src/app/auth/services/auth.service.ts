@@ -29,6 +29,8 @@ export class AuthService {
 
   login(user: User): Observable<HttpResponse<User>> {
 
+    this.cleanUpAllUserStorage();
+
     if (user.rememberMe) {
       this.useRememberMeStorage()
     }
@@ -47,6 +49,13 @@ export class AuthService {
       ),
       shareReplay()
     );
+  }
+
+  cleanUpAllUserStorage() : void  {
+    this.useRememberMeStorage();
+    this.logout();
+    this.resetToDefaultStorage();
+    this.logout();
   }
 
   accessStorage(): Storage {
