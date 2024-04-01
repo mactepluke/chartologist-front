@@ -43,3 +43,7 @@ p {
   animation: inverse-fade 3s ease-in-out forwards;
 }
 
+sycm-animated-sphere  {
+  width: auto;
+  height: 50px;
+}

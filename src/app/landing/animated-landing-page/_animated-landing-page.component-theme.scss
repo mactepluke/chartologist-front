@@ -2,8 +2,9 @@
 @use '@angular/material' as mat;
 
 @mixin background-color($chartomancer-front-theme) {
-  .background {
-    background-color: mat.get-theme-color($chartomancer-front-theme, primary);
-  }
-}
 
+  .custom-color  {
+    color: mat.get-theme-color($chartomancer-front-theme, primary);
+  }
+
+}

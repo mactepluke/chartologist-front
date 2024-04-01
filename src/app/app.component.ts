@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component, HostBinding, OnInit} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {NavigationMenuComponent} from "./navigation-menu/navigation-menu.component";
-import {LandingPageComponent} from "./landing/landing-page/landing-page.component";
 import {AuthService} from "./auth/services/auth.service";
 import {DisplayService} from "./shared_services/display.service";
+import {AnimatedLandingPageComponent} from "./landing/animated-landing-page/animated-landing-page.component";
 
 @Component({
   selector: 'sycm-root',
   standalone: true,
-  imports: [RouterOutlet, NavigationMenuComponent, LandingPageComponent],
+  imports: [RouterOutlet, NavigationMenuComponent, AnimatedLandingPageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -3,6 +3,7 @@ import {NgOptimizedImage} from "@angular/common";
 import {StoryBlockComponent, StoryBlockContent} from "./story-block/story-block.component";
 import {MatDivider} from "@angular/material/divider";
 import {iconName} from "../../core/constants/icon-names";
+import {AnimatedSphereComponent} from "../../animated-sphere/animated-sphere.component";
 
 @Component({
   selector: 'sycm-about-tab',
@@ -10,7 +11,8 @@ import {iconName} from "../../core/constants/icon-names";
   imports: [
     NgOptimizedImage,
     StoryBlockComponent,
-    MatDivider
+    MatDivider,
+    AnimatedSphereComponent
   ],
   templateUrl: './about-tab.component.html',
   styleUrl: './about-tab.component.css',

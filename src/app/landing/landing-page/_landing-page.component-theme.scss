@@ -1,9 +1,0 @@
-@use 'sass:map';
-@use '@angular/material' as mat;
-
-@mixin background-color($chartomancer-front-theme) {
-  .background {
-    background-color: mat.get-theme-color($chartomancer-front-theme, background, card);
-    color: mat.get-theme-color($chartomancer-front-theme, foreground, text);
-  }
-}

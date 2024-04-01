@@ -1,28 +1,27 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
-import {NgOptimizedImage, TitleCasePipe} from "@angular/common";
-import {MatCard} from "@angular/material/card";
-import {environment} from "../../../environments/environment";
-import {AppIconComponent} from "../../core/app-icon/app-icon.component";
-import {MatButton} from "@angular/material/button";
+import {Component, EventEmitter, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {DisclaimerDialogComponent} from "../../disclaimer-dialog/disclaimer-dialog.component";
+import {environment} from "../../../environments/environment";
+import {AppIconComponent} from "../../core/app-icon/app-icon.component";
+import {MatButton} from "@angular/material/button";
+import {TitleCasePipe} from "@angular/common";
+import {AnimatedSphereComponent} from "../../animated-sphere/animated-sphere.component";
+
 
 @Component({
-  selector: 'sycm-landing-page',
+  selector: 'sycm-animated-landing-page',
   standalone: true,
   imports: [
-    NgOptimizedImage,
-    MatCard,
-    TitleCasePipe,
     AppIconComponent,
-    MatButton
+    MatButton,
+    TitleCasePipe,
+    AnimatedSphereComponent
   ],
-  templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.scss', './_landing-page.component-theme.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: './animated-landing-page.component.html',
+  styleUrl: './animated-landing-page.component.scss'
 })
-export class LandingPageComponent {
+export class AnimatedLandingPageComponent {
   protected readonly environment = environment;
   @Output()
   private hasLanded : EventEmitter<boolean> = new EventEmitter<boolean>();
