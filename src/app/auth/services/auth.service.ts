@@ -10,12 +10,13 @@ import {shareReplay} from "rxjs/operators";
 @Injectable()
 export class AuthService {
   private readonly isLoggedInSubject: BehaviorSubject<boolean>
-  private storage: Storage = sessionStorage;
+  private storage!: Storage;
 
   constructor(
     private http: HttpClient,
     private jwtHelper: JwtHelperService
   ) {
+    this.resetToDefaultStorage();
     this.isLoggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
   }
 
@@ -63,7 +64,12 @@ export class AuthService {
   }
 
   private resetToDefaultStorage(): void {
-    this.storage = sessionStorage;
+
+    if (localStorage.getItem('jwtToken')) {
+      this.useRememberMeStorage();
+    } else {
+      this.storage = sessionStorage;
+    }
   }
 
   private useRememberMeStorage(): void {
@@ -109,7 +115,7 @@ export class AuthService {
 
   getUsername(): string {
     let username = this.accessStorage().getItem('username');
-    return username === null ? '' : username;
+    return username ?? '';
   }
 
   getIsLoggedInSubject(): BehaviorSubject<boolean> {
