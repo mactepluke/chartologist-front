@@ -1,7 +1,7 @@
 import {Component, inject, Input, OnInit} from '@angular/core';
 import {NgOptimizedImage} from "@angular/common";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
-import {MatIcon, MatIconRegistry} from "@angular/material/icon";
+import {MatIcon} from "@angular/material/icon";
 import {CustomIconComponent} from "../../../core/custom-icon/custom-icon.component";
 
 export interface StoryBlockContent {
@@ -30,6 +30,8 @@ export class StoryBlockComponent implements OnInit {
   textFirst: boolean = false;
   @Input()
   content!: StoryBlockContent;
+  @Input()
+  iconColor: string = '';
 
   isHandset(): boolean {
     return this.breakpointObserver.isMatched(Breakpoints.Handset);

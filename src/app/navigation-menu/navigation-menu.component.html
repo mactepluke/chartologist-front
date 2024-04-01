@@ -17,48 +17,48 @@
 
       <a (click)="onSelectPage('home'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
-          <mat-icon class="nav-icon">home</mat-icon>
-          <div class="items">ABOUT</div>
+          <sycm-custom-icon class="nav-icon" [iconName]="iconName.home" [scale]="iconScale"></sycm-custom-icon>
+          <div class="items">HOME</div>
         </div>
       </a>
 
       <a (click)="onSelectPage('signals'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
-          <mat-icon class="nav-icon">multiline_chart</mat-icon>
+          <sycm-custom-icon class="nav-icon" [iconName]="iconName.signals" [scale]="iconScale"></sycm-custom-icon>
           <div class="items">SIGNALS</div>
         </div>
       </a>
 
       <a (click)="onSelectPage('backtesting'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
-          <mat-icon class="nav-icon">bar_chart</mat-icon>
+          <sycm-custom-icon class="nav-icon" [iconName]="iconName.backtesting" [scale]="iconScale"></sycm-custom-icon>
           <div class="items">BACKTESTING</div>
         </div>
       </a>
 
       <a (click)="onSelectPage('trading-bot'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
-          <mat-icon class="nav-icon">adb</mat-icon>
-          <div class="items">TRADING BOT</div>
+          <sycm-custom-icon class="nav-icon" [iconName]="iconName.automation" [scale]="iconScale"></sycm-custom-icon>
+          <div class="items">AUTOMATION</div>
         </div>
       </a>
 
       <a (click)="onSelectPage('pricing'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
-          <mat-icon class="nav-icon">euro_symbol</mat-icon>
+          <sycm-custom-icon class="nav-icon" [iconName]="iconName.pricing" [scale]="iconScale"></sycm-custom-icon>
           <div class="items">PRICING</div>
         </div>
       </a>
       <a (click)="onSelectPage('faq'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
-          <mat-icon class="nav-icon">speaker_notes</mat-icon>
+          <sycm-custom-icon class="nav-icon" [iconName]="iconName.faq" [scale]="iconScale"></sycm-custom-icon>
           <div class="items">FAQ</div>
         </div>
       </a>
 
       <a (click)="onSelectPage('contact'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
-          <mat-icon class="nav-icon">alternate_email</mat-icon>
+          <sycm-custom-icon class="nav-icon" [iconName]="iconName.contact" [scale]="iconScale"></sycm-custom-icon>
           <div class="items">CONTACT</div>
         </div>
       </a>

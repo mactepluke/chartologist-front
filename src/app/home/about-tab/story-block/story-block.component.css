@@ -3,7 +3,7 @@ p {
   line-height: 1.5;
 }
 
-mat-icon  {
+mat-icon {
   transform: scale(8);
 }
 
@@ -13,9 +13,10 @@ div.block {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  width: 500px;
-  height: 400px;
+  width: 600px;
+  height: auto;
   overflow: hidden;
+  margin-top: 20px;
 }
 
 .text-margins {
@@ -23,27 +24,40 @@ div.block {
   margin-right: 30px;
 }
 
-div.right-text-margin {
-  margin-right: 30px;
-}
+@media (hover: hover) {
+  div.right-text-margin {
+    margin-right: 100px;
+  }
 
-div.left-text-margin {
-  margin-left: 30px;
+  div.left-text-margin {
+    margin-left: 100px;
+  }
 }
 
 @media (hover: none) {
   div.right-text-margin {
+    margin-right: 30px;
     margin-left: 30px;
   }
 
   div.left-text-margin {
+    margin-left: 30px;
     margin-right: 30px;
   }
-
-  div.block-container {
-    margin-bottom: 20px;
-  }
 }
+
+div.icon-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
 
 div.block-container {
   display: flex;
@@ -52,4 +66,11 @@ div.block-container {
   align-items: center;
   flex-wrap: wrap;
 }
+
+@media (hover: hover) {
+  div.block-container {
+    margin-bottom: 50px;
+  }
+}
+
 

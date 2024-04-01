@@ -3,6 +3,7 @@ import {MatTab, MatTabGroup} from "@angular/material/tabs";
 import {AboutTabComponent} from "../about-tab/about-tab.component";
 import {FeaturesTabComponent} from "../features-tab/features-tab.component";
 import {DisclaimerTabComponent} from "../disclaimer-tab/disclaimer-tab.component";
+import {FaqPageComponent} from "../../faq/faq-page/faq-page.component";
 
 @Component({
   selector: 'sycm-home-tab-group',
@@ -12,7 +13,8 @@ import {DisclaimerTabComponent} from "../disclaimer-tab/disclaimer-tab.component
     MatTab,
     AboutTabComponent,
     FeaturesTabComponent,
-    DisclaimerTabComponent
+    DisclaimerTabComponent,
+    FaqPageComponent
   ],
   templateUrl: './home-tab-group.component.html',
   styleUrl: './home-tab-group.component.css',

@@ -14,29 +14,33 @@ import {environment} from "../../environments/environment";
 import {MatSlideToggle} from "@angular/material/slide-toggle";
 import {DisplayService} from "../shared_services/display.service";
 import {AuthService} from "../auth/services/auth.service";
+import {CustomIconComponent} from "../core/custom-icon/custom-icon.component";
+import {iconName} from "../core/constants/icon-names";
 
 @Component({
   selector: 'sycm-navigation-menu',
   templateUrl: './navigation-menu.component.html',
   styleUrl: './navigation-menu.component.css',
   standalone: true,
-  imports: [
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    AsyncPipe,
-    RouterOutlet,
-    AppIconComponent,
-    UpperCasePipe,
-    TitleCasePipe,
-    MatSlideToggle
-  ],
+    imports: [
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        AsyncPipe,
+        RouterOutlet,
+        AppIconComponent,
+        UpperCasePipe,
+        TitleCasePipe,
+        MatSlideToggle,
+        CustomIconComponent
+    ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavigationMenuComponent implements OnInit {
   protected readonly environment = environment;
+  protected readonly iconScale = 1;
   private breakpointObserver = inject(BreakpointObserver);
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -74,4 +78,6 @@ export class NavigationMenuComponent implements OnInit {
       }
 
   }
+
+  protected readonly iconName = iconName;
 }
