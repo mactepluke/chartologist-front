@@ -1,5 +1,7 @@
+<div id="page-container">
 @if (isLoggedIn)  {
   <sycm-dashboard-panel (isLoggedIn)="setLoginStatus($event)"></sycm-dashboard-panel>
 } @else {
   <sycm-login-panel (isLoggedIn)="setLoginStatus($event)"></sycm-login-panel>
 }
+</div>

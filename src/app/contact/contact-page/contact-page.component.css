@@ -10,3 +10,7 @@ mat-card-content {
 p {
   font-weight: lighter;
 }
+
+#page-container {
+  height: 700px;
+}

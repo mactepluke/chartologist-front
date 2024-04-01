@@ -1,0 +1,29 @@
+p {
+  font-weight: lighter;
+}
+
+span {
+  font-weight: lighter;
+}
+
+
+.background {
+  height: 170px;
+  width: 100%;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+#social-media-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+sycm-custom-icon {
+  margin-right: 10px;
+}
