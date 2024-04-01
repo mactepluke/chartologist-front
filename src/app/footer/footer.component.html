@@ -1,21 +1,34 @@
 <div class="background">
-  <div>
+  <div class="container">
     <p><b>Features</b></p>
-    <p>Home</p>
-    <p>Backtesting</p>
-    <p>Automation</p>
+    <button (click)="onSelectPage('home')" mat-button>Home</button>
+    <button (click)="onSelectPage('backtesting')" mat-button>Backtesting</button>
+    <button (click)="onSelectPage('trading-bot')" mat-button>Automation</button>
   </div>
-  <div>
+  <div class="container">
     <p><b>Misc.</b></p>
-    <p>About</p>
-    <p>FAQ</p>
-    <p>Disclaimer</p>
+    <button (click)="onSelectPage('pricing')" mat-button>Pricing</button>
+    <button (click)="onSelectPage('contact')" mat-button>Contact</button>
+    <button (click)="onDisclaimer()" mat-button>Disclaimer</button>
   </div>
-  <div>
+  <div class="container">
     <p><b>Contact</b></p>
-    <div id="social-media-icons">
-    <sycm-custom-icon iconName=envelope></sycm-custom-icon>
-    <sycm-custom-icon iconName=linkedin></sycm-custom-icon>
+    <div id="container">
+      <div class="icon-class">
+        <a href="mailto:contact&#64;chartologist.syngleton.co">
+          <sycm-custom-icon iconName=envelope></sycm-custom-icon>
+        </a>
+      </div>
+      <div class="icon-class">
+        <a href="https://www.linkedin.com/in/luc-metz-b2245974/" target="_blank">
+          <sycm-custom-icon iconName=linkedin></sycm-custom-icon>
+        </a>
+      </div>
+      <div class="icon-class">
+        <a href="https://github.com/mactepluke" target="_blank">
+          <sycm-custom-icon iconName=github></sycm-custom-icon>
+        </a>
+      </div>
     </div>
   </div>
 </div>
