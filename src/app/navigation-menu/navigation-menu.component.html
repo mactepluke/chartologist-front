@@ -66,7 +66,7 @@
 
       <div class="horizontal-container" (click)="onSelectPage('home')">
         <sycm-app-icon class="icon" iconName="APP_ICON"></sycm-app-icon>
-        <h1 [textContent]="(environment.app_name | titlecase) + '_'" id="title">Chartologist</h1>
+        <h1 [textContent]="(environment.app_name | titlecase) + '_'" id="title">{{environment.app_name}}</h1>
       </div>
       <div>
         @if (isHandset$ | async) {
