@@ -15,10 +15,10 @@
 
       <mat-divider></mat-divider>
 
-      <a (click)="onSelectPage('backtesting'); handsetState ? drawer.toggle() : ''" mat-list-item>
+      <a (click)="onSelectPage('home'); handsetState ? drawer.toggle() : ''" mat-list-item>
         <div class="container">
-          <mat-icon class="nav-icon">bar_chart</mat-icon>
-          <div class="items">BACKTESTING</div>
+          <mat-icon class="nav-icon">home</mat-icon>
+          <div class="items">ABOUT</div>
         </div>
       </a>
 
@@ -26,6 +26,13 @@
         <div class="container">
           <mat-icon class="nav-icon">multiline_chart</mat-icon>
           <div class="items">SIGNALS</div>
+        </div>
+      </a>
+
+      <a (click)="onSelectPage('backtesting'); handsetState ? drawer.toggle() : ''" mat-list-item>
+        <div class="container">
+          <mat-icon class="nav-icon">bar_chart</mat-icon>
+          <div class="items">BACKTESTING</div>
         </div>
       </a>
 

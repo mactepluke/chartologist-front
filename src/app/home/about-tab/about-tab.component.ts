@@ -31,7 +31,7 @@ export class AboutTabComponent implements OnInit {
         'predictions based on\n' +
         'indicators such as trends, moving averages, support, and resistances.',
       thirdParagraph: 'Unfortunately, the reality is often disappointing.',
-      imagePath: '/assets/chartologist dollar raises from sand reduced.jpg'
+      iconName: 'test'
     };
 
     this.secondBlockContent = {
@@ -40,7 +40,7 @@ export class AboutTabComponent implements OnInit {
       secondParagraph: 'Chartologist analyzes recurring patterns on a more fundamental level and creates predictive strategies',
       thirdParagraph :'This approach is known as machine learning, as the algorithm learns through trial and error to capture the uniqueness\n' +
         'of past price action—everything that sets it apart from purely random data.',
-      imagePath: '/assets/chartologist cogs and data reduced.jpg'
+      iconName: 'test'
 
     };
 
@@ -51,7 +51,7 @@ export class AboutTabComponent implements OnInit {
       secondParagraph: 'Timing is crucial in trading—being late to buy or sell can result in missed opportunities for profit.\n' +
         'That\'s why sometimes the best strategy is to let our machine trade for you in real-time.',
       thirdParagraph: 'With Chartologist at your service, you have the option to trade manually or let our finely-tuned machine handle it for you. The possibilities are endless.',
-      imagePath: '/assets/chartologist real time market reduced.jpg'
+      iconName: 'test'
     };
 
     this.fourthBlockContent = {
@@ -59,7 +59,7 @@ export class AboutTabComponent implements OnInit {
       firstParagraph: 'As an old proverb wisely states: “trust, but verify.”',
       secondParagraph: 'We encourage you to do just that with us—explore our Backtesting section and see for yourself.',
       thirdParagraph: 'Simulate trusting Chartologist with your funds over a specific period to assess the actual results of following its signals.',
-      imagePath: '/assets/chartologist another dimension 1 reduced.jpg'
+      iconName: 'test'
     };
 
   }

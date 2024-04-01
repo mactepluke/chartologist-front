@@ -3,15 +3,8 @@ p {
   line-height: 1.5;
 }
 
-
-img {
-  filter: saturate(0.7);
-  object-fit: cover;
-}
-
-img.block {
-  width: 100%;
-  height: 100%;
+mat-icon  {
+  transform: scale(8);
 }
 
 div.block {
@@ -19,6 +12,7 @@ div.block {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   width: 500px;
   height: 400px;
   overflow: hidden;
