@@ -49,19 +49,6 @@
           <div class="items">PRICING</div>
         </div>
       </a>
-      <a (click)="onSelectPage('faq'); handsetState ? drawer.toggle() : ''" mat-list-item>
-        <div class="container">
-          <sycm-custom-icon class="nav-icon" [iconName]="iconName.faq" [scale]="iconScale"></sycm-custom-icon>
-          <div class="items">FAQ</div>
-        </div>
-      </a>
-
-      <a (click)="onSelectPage('contact'); handsetState ? drawer.toggle() : ''" mat-list-item>
-        <div class="container">
-          <sycm-custom-icon class="nav-icon" [iconName]="iconName.contact" [scale]="iconScale"></sycm-custom-icon>
-          <div class="items">CONTACT</div>
-        </div>
-      </a>
 
     </mat-nav-list>
   </mat-sidenav>
@@ -79,7 +66,7 @@
 
       <div class="horizontal-container" (click)="onSelectPage('home')">
         <sycm-app-icon class="icon" iconName="APP_ICON"></sycm-app-icon>
-        <h1 [textContent]="(environment.app_name | titlecase) + '_'" id="title"></h1>
+        <h1 [textContent]="(environment.app_name | titlecase) + '_'" id="title">Chartologist</h1>
       </div>
       <div>
         @if (isHandset$ | async) {
@@ -96,5 +83,6 @@
       </div>
     </mat-toolbar>
     <router-outlet></router-outlet>
+    <sycm-footer></sycm-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -16,26 +16,28 @@ import {DisplayService} from "../shared_services/display.service";
 import {AuthService} from "../auth/services/auth.service";
 import {CustomIconComponent} from "../core/custom-icon/custom-icon.component";
 import {iconName} from "../core/constants/icon-names";
+import {FooterComponent} from "../footer/footer.component";
 
 @Component({
   selector: 'sycm-navigation-menu',
   templateUrl: './navigation-menu.component.html',
   styleUrl: './navigation-menu.component.css',
   standalone: true,
-    imports: [
-        MatToolbarModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatListModule,
-        MatIconModule,
-        AsyncPipe,
-        RouterOutlet,
-        AppIconComponent,
-        UpperCasePipe,
-        TitleCasePipe,
-        MatSlideToggle,
-        CustomIconComponent
-    ],
+  imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    AsyncPipe,
+    RouterOutlet,
+    AppIconComponent,
+    UpperCasePipe,
+    TitleCasePipe,
+    MatSlideToggle,
+    CustomIconComponent,
+    FooterComponent
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavigationMenuComponent implements OnInit {

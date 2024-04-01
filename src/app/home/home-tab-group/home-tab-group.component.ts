@@ -4,6 +4,7 @@ import {AboutTabComponent} from "../about-tab/about-tab.component";
 import {FeaturesTabComponent} from "../features-tab/features-tab.component";
 import {DisclaimerTabComponent} from "../disclaimer-tab/disclaimer-tab.component";
 import {FaqPageComponent} from "../../faq/faq-page/faq-page.component";
+import {ContactPageComponent} from "../../contact/contact-page/contact-page.component";
 
 @Component({
   selector: 'sycm-home-tab-group',
@@ -14,7 +15,8 @@ import {FaqPageComponent} from "../../faq/faq-page/faq-page.component";
     AboutTabComponent,
     FeaturesTabComponent,
     DisclaimerTabComponent,
-    FaqPageComponent
+    FaqPageComponent,
+    ContactPageComponent
   ],
   templateUrl: './home-tab-group.component.html',
   styleUrl: './home-tab-group.component.css',

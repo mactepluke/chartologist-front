@@ -106,3 +106,7 @@ mat-divider {
   margin-bottom: 20px;
   width: 100%;
 }
+
+sycm-footer {
+  margin-top: 30px;
+}
