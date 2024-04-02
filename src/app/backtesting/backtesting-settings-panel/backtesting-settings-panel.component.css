@@ -11,10 +11,6 @@ mat-form-field {
   margin: 20px 20px 10px 0;
 }
 
-button {
-  width: 100px;
-}
-
 mat-card {
   margin: 20px 20px 10px 20px;
 }
@@ -30,4 +26,20 @@ mat-card-content {
 
 a {
   color: lightgray;
+}
+
+@media (hover: hover) {
+  button {
+    width: 100px;
+  }
+}
+
+@media (hover: none) {
+  button {
+    width: 300px;
+  }
+
+  mat-form-field {
+    min-width: 300px;
+  }
 }

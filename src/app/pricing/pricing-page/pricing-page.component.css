@@ -1,8 +1,28 @@
+mat-card  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 10px 20px 20px;
+  min-height: 380px;
+  width: 300px;
+}
+
+mat-card-title {
+  text-align: center;
+}
+
+mat-card-subtitle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 mat-card-content  {
   font-weight: lighter;
   margin-top: 30px;
+  display: flex;
+  flex-direction: column;
 }
-
 
 img {
   margin: 30px 0 30px 0;
@@ -13,28 +33,37 @@ img {
 #page-elements {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 30px;
-}
-
-mat-card {
-  margin: 20px 10px 0 20px;
 }
 
 li {
   margin-bottom: 5px;
 }
 
+h1  {
+  font-family: "Anta", sans-serif;
+  margin-top: 0;
+  bottom: 0;
+  text-align: center;
+}
+
 @media (hover: hover) {
-  h1 {
+  .small {
     font-size: 2.5rem;
+  }
+  .big {
+    font-size: 4rem;
   }
 }
 
 @media (hover: none) {
-  h1 {
-    font-size: 1.5rem;
+  .small {
+    font-size: 1.6rem;
+  }
+  .big {
+    font-size: 2.8rem;
   }
 }
 
@@ -69,4 +98,25 @@ li {
 
 #page-container {
   min-height: 700px;
+}
+
+span {
+  line-height: 2;
+  font-weight: lighter;
+  font-size: 0.8rem;
+}
+
+span.benefit-item {
+  margin-left: 10px;
+}
+
+div.benefit-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+button {
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
