@@ -1,7 +1,7 @@
 export const iconName = {
-  home: 'home_font',
-  signals: 'rocket_launch',
-  backtesting: 'bar_chart',
+  home: 'home_FILL1',
+  signals: 'vital_signs',
+  backtesting: 'finance',
   automation: 'manufacturing',
   pricing: 'payments',
   faq: 'light_bulb',

@@ -34,8 +34,8 @@ export class AboutTabComponent implements OnInit {
 
     this.secondBlockContent = {
       title: 'Automate your trading.',
-      firstParagraph: 'I f you prefer, you can let Chartologist make the trading for you based these signals.',
-      secondParagraph: 'Just connect your favorite exchange’s API key, define your starting capital and choose your trading strategy based on your own risk tolerance and expected profits.',
+      firstParagraph: 'If you prefer, you can let Chartologist make the trading for you based on these signals.',
+      secondParagraph: 'Just connect your account to your favorite exchange, define your starting capital and choose your trading strategy based on your own risk tolerance and expected profits.',
       thirdParagraph :'Then let our algorithms work their magic.',
       iconName: iconName.automation
 
@@ -44,9 +44,9 @@ export class AboutTabComponent implements OnInit {
 
     this.thirdBlockContent = {
       title: 'Test before you go.',
-      firstParagraph: 'Use Chartologist’s Backtesting feature to simulate automated trading during a past period of time and see the results for yourself.',
+      firstParagraph: 'Use Chartologist’s free Backtesting feature to simulate automated trading during a past period of time.',
       secondParagraph: 'It will give you a good idea of Chartologist’s predictive performance.',
-      thirdParagraph: '',
+      thirdParagraph: 'See the results for yourself, and decide if you want to jump in!',
       iconName: iconName.backtesting
     };
 

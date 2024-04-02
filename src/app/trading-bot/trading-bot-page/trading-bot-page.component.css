@@ -4,5 +4,5 @@ mat-card-content  {
 }
 
 #page-container {
-  height: 700px;
+  min-height: 700px;
 }
