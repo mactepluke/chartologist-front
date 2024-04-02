@@ -4,6 +4,7 @@ import {StoryBlockComponent, StoryBlockContent} from "./story-block/story-block.
 import {MatDivider} from "@angular/material/divider";
 import {iconName} from "../../core/constants/icon-names";
 import {AnimatedSphereComponent} from "../../animated-sphere/animated-sphere.component";
+import {DualTitle, DualTitleComponent} from "../../dual-title/dual-title.component";
 
 @Component({
   selector: 'sycm-about-tab',
@@ -12,7 +13,8 @@ import {AnimatedSphereComponent} from "../../animated-sphere/animated-sphere.com
     NgOptimizedImage,
     StoryBlockComponent,
     MatDivider,
-    AnimatedSphereComponent
+    AnimatedSphereComponent,
+    DualTitleComponent
   ],
   templateUrl: './about-tab.component.html',
   styleUrl: './about-tab.component.css',
@@ -22,8 +24,17 @@ export class AboutTabComponent implements OnInit {
   protected firstBlockContent!: StoryBlockContent;
   protected secondBlockContent!: StoryBlockContent;
   protected thirdBlockContent!: StoryBlockContent;
+  protected dualTitle!: DualTitle;
 
   ngOnInit(): void {
+
+    this.dualTitle = {
+      smallBlackText: 'Equip like a pro,',
+      bigOrangeText: 'Trade like a machine',
+      firstParagraph: 'Chartologist is a trading robot that monitors the market in real time and provides you with the best buy or sell signal.',
+      secondParagraph: 'Unlike most trading indicators, it leverages powerful machine learning algorithms that detect recurring patterns in price action.',
+    };
+
     this.firstBlockContent = {
       title: 'Receive real-time signals.',
       firstParagraph: 'Chartologist continuously fetches the latest price action of a variety of financial assets and performs a series of calculations in order to determine the most probable outcome.',

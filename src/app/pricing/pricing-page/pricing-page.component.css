@@ -3,7 +3,7 @@ mat-card  {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin: 20px 10px 20px 20px;
+  margin: 0 10px 20px 20px;
   min-height: 380px;
   width: 300px;
 }
@@ -24,54 +24,12 @@ mat-card-content  {
   flex-direction: column;
 }
 
-img {
-  margin: 30px 0 30px 0;
-  width: 400px;
-  filter: saturate(0.6);
-}
-
 #page-elements {
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 30px;
-}
-
-li {
-  margin-bottom: 5px;
-}
-
-h1  {
-  font-family: "Anta", sans-serif;
-  margin-top: 0;
-  bottom: 0;
-  text-align: center;
-}
-
-@media (hover: hover) {
-  .small {
-    font-size: 2.5rem;
-  }
-  .big {
-    font-size: 4rem;
-  }
-}
-
-@media (hover: none) {
-  .small {
-    font-size: 1.6rem;
-  }
-  .big {
-    font-size: 2.8rem;
-  }
-}
-
-.text-container {
-  margin-top: 40px;
-  margin-left: 30px;
-  margin-right: 30px;
-  text-align: center;
 }
 
 @keyframes inverse-fade {
@@ -119,4 +77,9 @@ div.benefit-item {
 button {
   margin-top: 30px;
   margin-bottom: 20px;
+}
+
+
+.title-block {
+  margin: 50px 30px 10px 30px;
 }

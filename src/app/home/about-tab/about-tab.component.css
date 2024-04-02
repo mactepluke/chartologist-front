@@ -4,56 +4,15 @@
   justify-content: space-between;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 80px 30px 60px 30px;
-}
-
-
-h1  {
-  font-family: "Anta", sans-serif;
-  margin-top: 0;
-  bottom: 0;
-  text-align: center;
-}
-
-@media (hover: hover) {
-  .small {
-    font-size: 2.5rem;
-  }
-  .big {
-    font-size: 4rem;
-  }
-}
-
-@media (hover: none) {
-  .small {
-    font-size: 1.6rem;
-  }
-  .big {
-    font-size: 2.8rem;
-  }
-}
-
-p {
-  font-weight: lighter;
-}
-
 @keyframes inverse-fade {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
 
-.inverse-fade-one {
-  animation: inverse-fade 1s ease-in-out forwards;
-}
-
-.inverse-fade-two {
-  animation: inverse-fade 2s ease-in-out forwards;
-}
-
 .inverse-fade-three {
   animation: inverse-fade 3s ease-in-out forwards;
+}
+
+sycm-dual-title {
+  margin: 50px 30px 10px 30px;
 }

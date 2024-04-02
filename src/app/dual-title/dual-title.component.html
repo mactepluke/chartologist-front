@@ -1,0 +1,15 @@
+<div class="container">
+
+  @if (swapTitles) {
+    <h1 class="inverse-fade-one big custom-color">{{ dualTitle.bigOrangeText }}</h1>
+    <h1 class="inverse-fade-one small">{{ dualTitle.smallBlackText }}</h1>
+  } @else {
+    <h1 class="inverse-fade-one small">{{ dualTitle.smallBlackText }}</h1>
+    <h1 class="inverse-fade-one big custom-color">{{ dualTitle.bigOrangeText }}</h1>
+  }
+
+  <div class="inverse-fade-two">
+    <p>{{ dualTitle.firstParagraph }}</p>
+    <p>{{ dualTitle.secondParagraph }}</p>
+  </div>
+</div>
