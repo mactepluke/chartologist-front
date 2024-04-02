@@ -30,6 +30,16 @@ button {
   justify-content: space-around;
 }
 
+.alt-background {
+  height: 170px;
+  width: 100%;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: lightgray;
+}
+
 
 #social-media-icons {
   display: flex;
