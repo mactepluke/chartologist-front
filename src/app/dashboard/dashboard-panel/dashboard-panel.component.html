@@ -1,38 +1,41 @@
 <mat-card [formGroup]="form">
-    <mat-card-header>
-        <mat-card-title>Account Information</mat-card-title>
-      <mat-card-subtitle>
-        You must type your password again to save the information settings
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div>
-        <mat-form-field class="items">
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="username">
-          <mat-hint>Email of 6-50 characters </mat-hint>
-        </mat-form-field>
-        <mat-form-field class="items">
-          <mat-label>Password</mat-label>
-          <input [type]="hide ? 'password' : 'text'" matInput formControlName="password">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-          <mat-hint>8-20 chars, min. one upper case, one lower case and one digit</mat-hint>
-        </mat-form-field>
-        <mat-form-field class="items">
-          <mat-label>Password</mat-label>
-          <input [type]="hide ? 'password' : 'text'" matInput formControlName="confirmedPassword">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hide">
-            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
-          <mat-hint>Please confirm password</mat-hint>
-        </mat-form-field>
-      </div>
-    </mat-card-content>
+  <mat-card-header>
+    <mat-card-title>Account Information</mat-card-title>
+    <mat-card-subtitle>
+      You must type your password again to save the information settings
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field class="items">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="username">
+      <mat-hint>Email of 6-50 characters</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="items">
+      <mat-label>Password</mat-label>
+      <input [type]="hide ? 'password' : 'text'" matInput formControlName="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-hint>8-20 chars, min. one upper case, one lower case and one digit</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="items">
+      <mat-label>Password</mat-label>
+      <input [type]="hide ? 'password' : 'text'" matInput formControlName="confirmedPassword">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-hint>Please confirm password</mat-hint>
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" (click)="onUpdateAccountSettings()" type="submit"
+              [disabled]="form.invalid">Save Account Settings
+      </button>
+      <button mat-raised-button (click)="resetForm()" type="submit">Reset fields</button>
+      <button id="logout" color="accent" mat-raised-button (click)="onLogout()">Log Out</button>
+    </div>
+  </mat-card-content>
 </mat-card>
 
-<button id="logout" color="accent" mat-raised-button (click)="onLogout()">Log Out</button>
-<button mat-raised-button (click)="resetForm()" type="submit">Reset</button>
-<button mat-raised-button color="primary" (click)="onUpdateAccountSettings()" type="submit" [disabled]="form.invalid">Update Settings</button>
