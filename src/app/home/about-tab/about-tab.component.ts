@@ -4,7 +4,7 @@ import {StoryBlockComponent, StoryBlockContent} from "./story-block/story-block.
 import {MatDivider} from "@angular/material/divider";
 import {iconName} from "../../core/constants/icon-names";
 import {AnimatedSphereComponent} from "../../animated-sphere/animated-sphere.component";
-import {DualTitle, DualTitleComponent} from "../../core/dual-title/dual-title.component";
+import {DualTitle, DualTitleComponent} from "../../dual-title/dual-title.component";
 
 @Component({
   selector: 'sycm-about-tab',

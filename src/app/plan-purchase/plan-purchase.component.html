@@ -1,3 +1,42 @@
 <div id="page-container">
-  {{ plan }}
+  <div class="title-block">
+    <sycm-dual-title [dualTitle]="dualTitle" swapTitles="true"></sycm-dual-title>
+  </div>
+  <mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <ng-template matStepLabel>Order recap</ng-template>
+        <p>{{"1x " + selectedPlan.name + " Plan"}}</p>
+        <p><i>Included features:</i></p>
+        @for(feature of selectedPlanFeatures; track feature) {
+          <span>{{"- " + feature}}</span><br>
+        }
+        <p>---</p>
+        <p>Total price: {{selectedPlan.price}}</p>
+        <div class="container">
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Billing info">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+
 </div>

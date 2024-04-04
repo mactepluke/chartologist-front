@@ -1,7 +1,10 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from "@angular/material/card";
-import {DualTitle, DualTitleComponent} from "../../core/dual-title/dual-title.component";
+import {DualTitle, DualTitleComponent} from "../../dual-title/dual-title.component";
 import {MatButton} from "@angular/material/button";
+import {MatDialog} from "@angular/material/dialog";
+import {NotSubscribedDialogComponent} from "../../not-subcribed-dialog/not-subscribed-dialog.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'sycm-trading-bot-page',
@@ -22,6 +25,9 @@ import {MatButton} from "@angular/material/button";
 export class TradingBotPageComponent implements OnInit  {
   protected dualTitle!: DualTitle;
 
+  constructor(private dialog: MatDialog, private router: Router) {
+  }
+
   ngOnInit(): void {
     this.dualTitle = {
       smallBlackText: '',
@@ -31,5 +37,15 @@ export class TradingBotPageComponent implements OnInit  {
     };
   }
 
+  protected onStart() {
+    this.openDialog();
+  }
 
+  protected openDialog() {
+    const dialogRef = this.dialog.open(NotSubscribedDialogComponent);
+
+    dialogRef.afterClosed().subscribe(() => {
+        this.router.navigate(['pricing']);
+    });
+  }
 }

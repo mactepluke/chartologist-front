@@ -11,7 +11,7 @@ import {Trade} from "../../core/models/Trade";
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {DisplayService} from "../../shared_services/display.service";
 import {timeout} from "rxjs";
-import {DualTitle, DualTitleComponent} from "../../core/dual-title/dual-title.component";
+import {DualTitle, DualTitleComponent} from "../../dual-title/dual-title.component";
 
 export interface BasicBacktestingResults {
   accountBalance: number;

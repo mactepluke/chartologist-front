@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from "@angular/material/card";
-import {DualTitle, DualTitleComponent} from "../../core/dual-title/dual-title.component";
+import {DualTitle, DualTitleComponent} from "../../dual-title/dual-title.component";
 import {CustomIconComponent} from "../../core/custom-icon/custom-icon.component";
 
 @Component({

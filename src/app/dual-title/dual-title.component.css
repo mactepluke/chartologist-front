@@ -41,13 +41,13 @@ p {
 }
 
 .inverse-fade-one {
-  animation: inverse-fade 1s ease-in-out forwards;
+  animation: inverse-fade 0.7s ease-in-out forwards;
 }
 
 .inverse-fade-two {
-  animation: inverse-fade 2s ease-in-out forwards;
+  animation: inverse-fade 1s ease-in-out forwards;
 }
 
 .inverse-fade-three {
-  animation: inverse-fade 3s ease-in-out forwards;
+  animation: inverse-fade 1.5s ease-in-out forwards;
 }

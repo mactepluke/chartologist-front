@@ -1,3 +1,34 @@
 #page-container {
   min-height: 700px;
 }
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.title-block {
+  margin: 20px 30px 20px 30px;
+}
+
+p, span {
+  margin-left: 20px;
+  font-weight: lighter;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+button  {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 150px;
+}
+
+.container  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

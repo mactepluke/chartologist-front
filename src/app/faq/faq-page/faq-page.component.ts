@@ -7,7 +7,7 @@ import {
   MatExpansionPanelHeader,
   MatExpansionPanelTitle
 } from "@angular/material/expansion";
-import {DualTitle, DualTitleComponent} from "../../core/dual-title/dual-title.component";
+import {DualTitle, DualTitleComponent} from "../../dual-title/dual-title.component";
 
 @Component({
   selector: 'sycm-faq-page',
