@@ -41,7 +41,7 @@ export class TradingBotPageComponent implements OnInit  {
     this.openDialog();
   }
 
-  protected openDialog() {
+  private openDialog() {
     const dialogRef = this.dialog.open(NotSubscribedDialogComponent);
 
     dialogRef.afterClosed().subscribe(() => {
