@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from "@angular/material/card";
 import {
   MatAccordion,
@@ -7,6 +7,7 @@ import {
   MatExpansionPanelHeader,
   MatExpansionPanelTitle
 } from "@angular/material/expansion";
+import {DualTitle, DualTitleComponent} from "../../dual-title/dual-title.component";
 
 @Component({
   selector: 'sycm-faq-page',
@@ -21,12 +22,22 @@ import {
     MatExpansionPanel,
     MatExpansionPanelHeader,
     MatExpansionPanelTitle,
-    MatExpansionPanelDescription
+    MatExpansionPanelDescription,
+    DualTitleComponent
   ],
   templateUrl: './faq-page.component.html',
   styleUrl: './faq-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FaqPageComponent {
-  panelOpenState = false;
+export class FaqPageComponent implements OnInit {
+  protected dualTitle!: DualTitle;
+
+  ngOnInit(): void {
+    this.dualTitle = {
+      smallBlackText: 'Frequently Asked',
+      bigOrangeText: 'Questions',
+      firstParagraph: '',
+      secondParagraph: '',
+    };
+  }
 }
