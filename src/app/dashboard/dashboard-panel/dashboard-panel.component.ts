@@ -24,7 +24,7 @@ import {MatFormField, MatHint, MatLabel, MatSuffix} from "@angular/material/form
 import {MatIcon} from "@angular/material/icon";
 import {MatInput, MatInputModule} from "@angular/material/input";
 import {AsyncPipe} from "@angular/common";
-import {exhaustMap, retry, Subject} from "rxjs";
+import {exhaustMap, Subject, timeout} from "rxjs";
 import {DisplayService} from "../../shared_services/display.service";
 import {Router} from "@angular/router";
 
@@ -81,22 +81,6 @@ export class DashboardPanelComponent implements OnInit {
       this.resetForm()
     });
 
-    this.subjectRequest$.pipe(
-      exhaustMap((userToUpdate: UserToUpdate) => this.userService.updateUser(userToUpdate.username, userToUpdate.user)), retry()
-    ).subscribe(
-      {
-        next: (user: User) => {
-          this.user = user;
-          this.resetForm();
-          this.displayService.openSnackBar(`User \'${user.username}\' has been updated!`);
-        },
-        error: (error: Error) => {
-          console.log(error);
-          this.displayService.openSnackBar('Could not update user.')
-        }
-      }
-    );
-
     this.form = this.formBuilder.group(this.userService.getFormControls(),
       {
         updateOn: 'blur',
@@ -119,6 +103,26 @@ export class DashboardPanelComponent implements OnInit {
   }
 
   onUpdateAccountSettings() : void  {
+
+    this.subjectRequest$.pipe(
+      exhaustMap((userToUpdate: UserToUpdate) =>
+        this.userService.updateUser(userToUpdate.username, userToUpdate.user).pipe(
+          timeout(5000))
+      )
+    ).subscribe(
+      {
+        next: (user: User) => {
+          this.user = user;
+          this.resetForm();
+          this.displayService.openSnackBar(`User \'${user.username}\' has been updated!`);
+        },
+        error: (error: Error) => {
+          console.log(error);
+          this.displayService.openSnackBar('Could not update user.')
+        }
+      }
+    );
+
     this.subjectRequest$.next({
       username: this.user.username,
       user: this.form.value

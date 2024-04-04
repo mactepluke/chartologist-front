@@ -4,7 +4,7 @@ import {StoryBlockComponent, StoryBlockContent} from "./story-block/story-block.
 import {MatDivider} from "@angular/material/divider";
 import {iconName} from "../../core/constants/icon-names";
 import {AnimatedSphereComponent} from "../../animated-sphere/animated-sphere.component";
-import {DualTitle, DualTitleComponent} from "../../dual-title/dual-title.component";
+import {DualTitle, DualTitleComponent} from "../../core/dual-title/dual-title.component";
 
 @Component({
   selector: 'sycm-about-tab',
@@ -29,35 +29,35 @@ export class AboutTabComponent implements OnInit {
   ngOnInit(): void {
 
     this.dualTitle = {
-      smallBlackText: 'Equip like a pro,',
-      bigOrangeText: 'Trade like a machine',
-      firstParagraph: 'Chartologist is a trading robot that monitors the market in real time and provides you with the best buy or sell signal.',
-      secondParagraph: 'Unlike most trading indicators, it leverages powerful machine learning algorithms that detect recurring patterns in price action.',
+      smallBlackText: 'Your Automated Trading Solution.',
+      bigOrangeText: 'Chartologist,',
+      firstParagraph: 'Chartologist is an advanced trading robot designed to optimize your trading strategy. Leveraging powerful machine learning algorithms, it continuously analyzes real-time market data to deliver precise buy or sell signals.',
+      secondParagraph: 'Don\'t venture in the markets without the finest indicators. ' +
+        'With the Help of Chartologist, equip like a pro—then trade like a machine.'
     };
 
     this.firstBlockContent = {
-      title: 'Receive real-time signals.',
-      firstParagraph: 'Chartologist continuously fetches the latest price action of a variety of financial assets and performs a series of calculations in order to determine the most probable outcome.',
-      secondParagraph: 'You get to receive those signals as soon as they are ready and use them to help with your decision making.',
+      title: 'Real-time Signal Alerts.',
+      firstParagraph: 'Stay updated with instant notifications whenever a trading opportunity arises.',
+      secondParagraph: '',
       thirdParagraph: '',
       iconName: iconName.signals
     };
 
     this.secondBlockContent = {
-      title: 'Automate your trading.',
-      firstParagraph: 'If you prefer, you can let Chartologist make the trading for you based on these signals.',
-      secondParagraph: 'Just connect your account to your favorite exchange, define your starting capital and choose your trading strategy based on your own risk tolerance and expected profits.',
-      thirdParagraph :'Then let our algorithms work their magic.',
+      title: 'Automated Trading.',
+      firstParagraph: 'Seamlessly integrate with your favorite exchange and let Chartologist execute trades based on your defined strategy.',
+      secondParagraph: '',
+      thirdParagraph :'',
       iconName: iconName.automation
 
     };
 
-
     this.thirdBlockContent = {
-      title: 'Test before you go.',
-      firstParagraph: 'Use Chartologist’s free Backtesting feature to simulate automated trading during a past period of time.',
-      secondParagraph: 'It will give you a good idea of Chartologist’s predictive performance.',
-      thirdParagraph: 'See the results for yourself, and decide if you want to jump in!',
+      title: 'Backtesting Capability.',
+      firstParagraph: 'Test the effectiveness of your trading strategy with our free Backtesting feature, allowing you to make informed decisions before committing real capital.',
+      secondParagraph: '',
+      thirdParagraph: '',
       iconName: iconName.backtesting
     };
 

@@ -30,11 +30,11 @@
       <mat-hint>Please confirm password</mat-hint>
     </mat-form-field>
     <div>
-      <button mat-raised-button color="primary" (click)="onUpdateAccountSettings()" type="submit"
+      <button mat-raised-button color="accent" (click)="onUpdateAccountSettings()" type="submit"
               [disabled]="form.invalid">Save Account Settings
       </button>
       <button mat-raised-button (click)="resetForm()" type="submit">Reset fields</button>
-      <button id="logout" color="accent" mat-raised-button (click)="onLogout()">Log Out</button>
+      <button id="logout" color="primary" mat-raised-button (click)="onLogout()">Log Out</button>
     </div>
   </mat-card-content>
 </mat-card>

@@ -23,7 +23,7 @@ import {Router} from "@angular/router";
 import {AuthService} from "../../auth/services/auth.service";
 import {User} from "../../auth/models/User";
 import {DisplayService} from "../../shared_services/display.service";
-import {exhaustMap, retry, Subject} from "rxjs";
+import {exhaustMap, Subject, timeout} from "rxjs";
 import {UserService} from "../../shared_services/user.service";
 
 @Component({
@@ -68,21 +68,6 @@ export class CreateAccountPageComponent implements OnInit, OnDestroy {
         validators: this.checkPasswords
       });
 
-      this.createRequest$.pipe(
-        exhaustMap((user: User) => this.authService.createUser(user)), retry()
-      ).subscribe(
-        {
-          next: (user) => {
-            this.authService.logout();
-            this.router.navigate(['dashboard'])
-              .then(() => this.displayService.openSnackBar(`User \'${user.username}\' has been created!`))
-          },
-          error: (error) => {
-            console.log(error);
-            this.displayService.openSnackBar('Could not create user.')
-          }
-        }
-      );
   }
 
   ngOnDestroy() {
@@ -99,6 +84,23 @@ export class CreateAccountPageComponent implements OnInit, OnDestroy {
 
 
   onCreate() {
+    this.createRequest$.pipe(
+      exhaustMap((user: User) => this.authService.createUser(user).pipe(timeout(5000))
+      )
+    ).subscribe(
+      {
+        next: (user) => {
+          this.authService.logout();
+          this.router.navigate(['dashboard'])
+            .then(() => this.displayService.openSnackBar(`User \'${user.username}\' has been created!`))
+        },
+        error: (error) => {
+          console.log(error);
+          this.displayService.openSnackBar('Could not create user.')
+        }
+      }
+    );
+
     this.createRequest$.next(this.form.value);
   }
 

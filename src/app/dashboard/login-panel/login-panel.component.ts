@@ -17,7 +17,7 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatInput, MatInputModule} from "@angular/material/input";
 import {MatDivider} from "@angular/material/divider";
 import {environment} from "../../../environments/environment";
-import {exhaustMap, retry, Subject} from "rxjs";
+import {exhaustMap, Subject, timeout} from "rxjs";
 import {User} from "../../auth/models/User";
 import {MatCheckbox} from "@angular/material/checkbox";
 
@@ -68,20 +68,6 @@ export class LoginPanelComponent implements OnInit, OnDestroy {
       password: [null, [Validators.required, Validators.pattern(environment.passwordRegex)]],
       rememberMe: [false]
     });
-
-    this.loginRequest$.pipe(
-      exhaustMap((user: User) => this.authService.login(user).pipe()), retry()
-    ).subscribe(
-      {
-        next: (user) => {
-          this.isLoggedIn.emit(this.authService.isLoggedIn());
-          this.displayService.openSnackBar(`User \'${user.body?.username}\' is logged in!`)
-        },
-        error: (error) => {
-          console.log(error);
-          this.displayService.openSnackBar(`Could not log in, try with other credentials or create a new user`);
-        }
-      });
   }
 
   ngOnDestroy() {
@@ -89,7 +75,22 @@ export class LoginPanelComponent implements OnInit, OnDestroy {
   }
 
   onLogin() : void {
-    console.log(this.form.value);
+    this.loginRequest$.pipe(
+      exhaustMap((user: User) =>
+        this.authService.login(user).pipe(
+          timeout(5000))
+      )
+    ).subscribe({
+      next: (user) => {
+        this.isLoggedIn.emit(this.authService.isLoggedIn());
+        this.displayService.openSnackBar(`User '${user.body?.username}' is logged in!`);
+      },
+      error: (error) => {
+        console.log(error);
+        this.displayService.openSnackBar(`Could not log in, try with other credentials or create a new user`);
+      }
+    });
+
     this.loginRequest$.next(this.form.value);
   }
 

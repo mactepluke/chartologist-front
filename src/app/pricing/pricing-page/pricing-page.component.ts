@@ -9,7 +9,7 @@ import {
 } from "@angular/material/card";
 import {CustomIconComponent} from "../../core/custom-icon/custom-icon.component";
 import {MatButton} from "@angular/material/button";
-import {DualTitle, DualTitleComponent} from "../../dual-title/dual-title.component";
+import {DualTitle, DualTitleComponent} from "../../core/dual-title/dual-title.component";
 
 @Component({
   selector: 'sycm-pricing-page',
