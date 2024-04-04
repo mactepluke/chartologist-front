@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {
   BacktestingSettings,
   BacktestingSettingsPanelComponent
@@ -11,6 +11,7 @@ import {Trade} from "../../core/models/Trade";
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {DisplayService} from "../../shared_services/display.service";
 import {timeout} from "rxjs";
+import {DualTitle, DualTitleComponent} from "../../core/dual-title/dual-title.component";
 
 export interface BasicBacktestingResults {
   accountBalance: number;
@@ -35,7 +36,8 @@ export interface BasicBacktestingResults {
     BacktestingSettingsPanelComponent,
     ResultsBlockComponent,
     NgForOf,
-    MatProgressBar
+    MatProgressBar,
+    DualTitleComponent
   ],
   providers: [
     BacktestingService
@@ -45,14 +47,26 @@ export interface BasicBacktestingResults {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class BacktestingPageComponent {
+export class BacktestingPageComponent implements OnInit {
   contents: ResultsBlockContent[] = [];
   displayResultsBlocks = false;
   serverIsBusy = false;
+  dualTitle!: DualTitle;
 
   constructor(private backtestingService: BacktestingService,
               private displayService: DisplayService,
               private cdr: ChangeDetectorRef) {
+  }
+
+  ngOnInit(): void {
+    this.dualTitle = {
+      smallBlackText: '',
+      bigOrangeText: 'Backtesting',
+      firstParagraph: 'Enter your settings and run the trading simulation.',
+      secondParagraph: 'Only a limited assets and timeframes are available at this time, but more will be added soon.' +
+        'The date range is limited to the 26th of August 2023 to the 15th of February 2024 (see FAQ to learn why).'
+    };
+
   }
 
   launchBackTesting($settings: BacktestingSettings) {

@@ -7,6 +7,7 @@ import {AppIconComponent} from "../../core/app-icon/app-icon.component";
 import {MatButton} from "@angular/material/button";
 import {TitleCasePipe} from "@angular/common";
 import {AnimatedSphereComponent} from "../../animated-sphere/animated-sphere.component";
+import {CustomIconComponent} from "../../core/custom-icon/custom-icon.component";
 
 
 @Component({
@@ -16,7 +17,8 @@ import {AnimatedSphereComponent} from "../../animated-sphere/animated-sphere.com
     AppIconComponent,
     MatButton,
     TitleCasePipe,
-    AnimatedSphereComponent
+    AnimatedSphereComponent,
+    CustomIconComponent
   ],
   templateUrl: './animated-landing-page.component.html',
   styleUrl: './animated-landing-page.component.scss'

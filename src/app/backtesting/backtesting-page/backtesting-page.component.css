@@ -16,6 +16,7 @@ mat-progress-bar  {
 
 sycm-results-block  {
   animation: inverse-fade 0.3s ease-in-out forwards;
+  margin-bottom: 20px;
 }
 
 @keyframes inverse-fade {
@@ -25,4 +26,8 @@ sycm-results-block  {
 
 #page-container {
   min-height: 700px;
+}
+
+#title {
+  margin: 20px 30px 0 30px;
 }

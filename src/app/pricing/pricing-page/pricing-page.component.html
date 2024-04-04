@@ -39,7 +39,7 @@
           <span class="benefit-item">Automation with pro-level settings</span>
         </div>
       </mat-card-content>
-      <button mat-raised-button color="primary" type="submit">Add to cart</button>
+      <button (click)="onGetPlan('basic')" mat-raised-button color="primary" type="submit">Get now</button>
     </mat-card>
 
     <mat-card class="inverse-fade-two">
@@ -77,7 +77,7 @@
           <span class="benefit-item">Automation with pro-level settings</span>
         </div>
       </mat-card-content>
-      <button mat-raised-button color="primary" type="submit">Add to cart</button>
+      <button (click)="onGetPlan('advanced')" mat-raised-button color="primary" type="submit">Get now</button>
     </mat-card>
 
     <mat-card class="inverse-fade-three">
@@ -115,7 +115,7 @@
           <span class="benefit-item">Automation with pro-level settings</span>
         </div>
       </mat-card-content>
-      <button mat-raised-button color="primary" type="submit">Add to cart</button>
+      <button (click)="onGetPlan('premium')" mat-raised-button color="primary" type="submit">Get now</button>
     </mat-card>
 
   </div>

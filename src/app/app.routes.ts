@@ -53,8 +53,15 @@ export const routes: Routes = [
     loadComponent: () => import('./app.component').then(module => module.AppComponent)
   },
   {
+    path: 'plan-purchase/:plan',
+    title: 'Plan Purchase',
+    canActivate: [AuthGuard()],
+    loadComponent: () => import('./plan-purchase/plan-purchase.component').then(module => module.PlanPurchaseComponent)
+  },
+  {
     path: '**',
     title: 'Home',
     loadComponent: () => import('./home/home-page/home-page.component').then(module => module.HomePageComponent)
   }
 ];
+

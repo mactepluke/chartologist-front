@@ -10,6 +10,7 @@ import {
 import {CustomIconComponent} from "../../core/custom-icon/custom-icon.component";
 import {MatButton} from "@angular/material/button";
 import {DualTitle, DualTitleComponent} from "../../core/dual-title/dual-title.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'sycm-pricing-page',
@@ -32,6 +33,9 @@ import {DualTitle, DualTitleComponent} from "../../core/dual-title/dual-title.co
 export class PricingPageComponent implements OnInit {
   protected dualTitle!: DualTitle;
 
+  constructor(private router: Router) {
+  }
+
 
   ngOnInit(): void {
     this.dualTitle = {
@@ -40,6 +44,10 @@ export class PricingPageComponent implements OnInit {
       firstParagraph: '',
       secondParagraph: '',
     };
+  }
+
+  onGetPlan(plan: string) {
+    this.router.navigate(['/plan-purchase', plan]);
   }
 
 }
