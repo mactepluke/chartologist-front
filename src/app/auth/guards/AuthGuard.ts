@@ -16,7 +16,7 @@ function isAllowed(): boolean {
   }
 
   const displayService: DisplayService = inject(DisplayService);
-  router.navigateByUrl('dashboard').then(() => displayService.openSnackBar('You must be logged in to use this feature!'));
+  router.navigateByUrl('dashboard').then(() => displayService.openSnackBar('You must be logged in to access this page!'));
 
   return false;
 }

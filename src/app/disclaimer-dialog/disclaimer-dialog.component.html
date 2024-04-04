@@ -1,9 +1,9 @@
 <h2 mat-dialog-title>Disclaimer</h2>
-<mat-dialog-content class="mat-typography">
+<mat-dialog-content class="mat-typography" (scroll)="onScroll($event)">
   <h3>No Investment Advice Provided</h3>
   <sycm-disclaimer-content></sycm-disclaimer-content>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button [mat-dialog-close]="false" mat-dialog-close>Disagree</button>
-  <button mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Agree</button>
+  <button mat-button (click)="onClose()" [mat-dialog-close]="false" mat-dialog-close cdkFocusInitial>Disagree</button>
+  <button mat-button (click)="onAgree()" color="primary" [disabled]="!agreeButtonEnabled" [mat-dialog-close]="true">Agree</button>
 </mat-dialog-actions>
