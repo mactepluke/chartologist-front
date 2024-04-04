@@ -22,22 +22,14 @@ button {
 }
 
 .background {
-  height: 170px;
-  width: 100%;
-  color: black;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.alt-background {
-  height: 170px;
+  height: 180px;
   width: 100%;
   color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   background-color: darkgray;
+  padding-top: 10px;
 }
 
 #icon-container {

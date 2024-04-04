@@ -3,8 +3,9 @@
     <sycm-dual-title [dualTitle]="dualTitle" swapTitles="true"></sycm-dual-title>
   </div>
   <mat-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
+    <mat-step>
         <ng-template matStepLabel>Order recap</ng-template>
+      <div class="text-content">
         <p>{{"1x " + selectedPlan.name + " Plan"}}</p>
         <p><i>Included features:</i></p>
         @for(feature of selectedPlanFeatures; track feature) {
@@ -12,22 +13,25 @@
         }
         <p>---</p>
         <p>Total price: {{selectedPlan.price}}</p>
+      </div>
         <div class="container">
           <button mat-raised-button color="primary" matStepperNext>Next</button>
       </div>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" label="Billing info">
-      <form [formGroup]="secondFormGroup">
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
-        </mat-form-field>
-        <div>
+      <div class="text-content">
+      <p>
+        Unfortunately, <b>you cannot purchase this service</b> in your country yet due to legal restrictions.
+        We hope to be able to make it available soon.
+      </p>
+        <p>
+          We invite you to check our free <b>Backtesting</b> feature in the meantime, and be patient!
+        </p>
+      </div>
+        <div class="container">
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-raised-button color="primary" disabled="true" mat-button matStepperNext>Next</button>
         </div>
-      </form>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>

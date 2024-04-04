@@ -29,9 +29,6 @@ import {plans} from "../core/constants/plans";
 })
 export class PlanPurchaseComponent implements OnInit {
   protected planType!: keyof typeof plans;
-  firstFormGroup = this.formBuilder.group({
-    firstCtrl: ['', Validators.required],
-  });
   secondFormGroup = this.formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
