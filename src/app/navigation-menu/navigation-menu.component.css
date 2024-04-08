@@ -43,15 +43,16 @@ mat-nav-list {
 
 .items {
   font-size: 10px;
-  font-weight: lighter;
   margin-bottom: 5px;
+}
+
+#title {
+  font-family: "Source Code Pro", sans-serif;
 }
 
 @media (hover: none) {
   #title {
-    font-family: "Anta", sans-serif;
     font-size: 1.3rem;
-    font-weight: lighter;
   }
 
   .icon {
@@ -62,9 +63,7 @@ mat-nav-list {
 
 @media (hover: hover) {
   #title {
-    font-family: "Anta", sans-serif;
-    font-size: 2rem;
-    font-weight: lighter;
+    font-size: 1.8rem;
   }
 
   .icon {

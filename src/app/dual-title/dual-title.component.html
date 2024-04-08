@@ -1,11 +1,11 @@
 <div class="container">
 
   @if (swapTitles) {
-    <h1 class="inverse-fade-one big custom-color">{{ dualTitle.bigOrangeText }}</h1>
-    <h1 class="inverse-fade-one small">{{ dualTitle.smallBlackText }}</h1>
+    <sycm-big-colored-title [icon]="dualTitle.icon" [bigColoredTitle]="dualTitle.bigColoredTitle"></sycm-big-colored-title>
+    <h1 class="inverse-fade-one small">{{ dualTitle.smallBlackTitle }}</h1>
   } @else {
-    <h1 class="inverse-fade-one small">{{ dualTitle.smallBlackText }}</h1>
-    <h1 class="inverse-fade-one big custom-color">{{ dualTitle.bigOrangeText }}</h1>
+    <h1 class="inverse-fade-one small">{{ dualTitle.smallBlackTitle }}</h1>
+    <sycm-big-colored-title [bigColoredTitle]="dualTitle.bigColoredTitle"></sycm-big-colored-title>
   }
 
   <div class="inverse-fade-two">

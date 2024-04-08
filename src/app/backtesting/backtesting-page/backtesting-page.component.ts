@@ -12,6 +12,8 @@ import {MatProgressBar} from "@angular/material/progress-bar";
 import {DisplayService} from "../../shared_services/display.service";
 import {timeout} from "rxjs";
 import {DualTitle, DualTitleComponent} from "../../dual-title/dual-title.component";
+import {CustomIconComponent} from "../../core/custom-icon/custom-icon.component";
+import {iconName} from "../../core/constants/icon-names";
 
 export interface BasicBacktestingResults {
   accountBalance: number;
@@ -32,13 +34,14 @@ export interface BasicBacktestingResults {
 @Component({
   selector: 'sycm-backtesting-page',
   standalone: true,
-  imports: [
-    BacktestingSettingsPanelComponent,
-    ResultsBlockComponent,
-    NgForOf,
-    MatProgressBar,
-    DualTitleComponent
-  ],
+    imports: [
+        BacktestingSettingsPanelComponent,
+        ResultsBlockComponent,
+        NgForOf,
+        MatProgressBar,
+        DualTitleComponent,
+        CustomIconComponent
+    ],
   providers: [
     BacktestingService
   ],
@@ -60,11 +63,12 @@ export class BacktestingPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.dualTitle = {
-      smallBlackText: '',
-      bigOrangeText: 'Backtesting',
+      smallBlackTitle: '',
+      bigColoredTitle: 'Backtesting',
       firstParagraph: 'Enter your settings and run the trading simulation.',
       secondParagraph: 'Only a limited assets and timeframes are available at this time, but more will be added soon.' +
-        'The date range is limited to the 26th of August 2023 to the 15th of February 2024 (see FAQ to learn why).'
+        'The date range is limited to the 26th of August 2023 to the 15th of February 2024 (see FAQ to learn why).',
+      icon: iconName.backtesting
     };
 
   }
@@ -167,4 +171,6 @@ export class BacktestingPageComponent implements OnInit {
     });
     return this.round2(leverage / trades.length);
   }
+
+  protected readonly iconName = iconName;
 }

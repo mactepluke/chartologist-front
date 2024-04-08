@@ -24,8 +24,8 @@ export class ContactPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.dualTitle = {
-      smallBlackText: '',
-      bigOrangeText: 'Contact',
+      smallBlackTitle: '',
+      bigColoredTitle: 'Contact',
       firstParagraph: '',
       secondParagraph: '',
     };

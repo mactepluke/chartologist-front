@@ -5,6 +5,7 @@ import {MatButton} from "@angular/material/button";
 import {NotSubscribedDialogComponent} from "../../not-subcribed-dialog/not-subscribed-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
+import {iconName} from "../../core/constants/icon-names";
 
 @Component({
   selector: 'sycm-signals-page',
@@ -30,10 +31,11 @@ export class SignalsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.dualTitle = {
-      smallBlackText: '',
-      bigOrangeText: 'Signals',
+      smallBlackTitle: '',
+      bigColoredTitle: 'Signals',
       firstParagraph: 'Receive real-time signals for the assets and timeframes of your choice, directly in your inbox or by SMS.',
-      secondParagraph: 'Let\'s configure you signals schedule step by step.'
+      secondParagraph: 'Let\'s configure you signals schedule step by step.',
+      icon: iconName.signals
     };
   }
   protected onStart() {

@@ -29,8 +29,8 @@ export class AboutTabComponent implements OnInit {
   ngOnInit(): void {
 
     this.dualTitle = {
-      smallBlackText: 'Your Automated Trading Solution.',
-      bigOrangeText: 'Chartologist,',
+      smallBlackTitle: 'Your Automated Trading Solution.',
+      bigColoredTitle: 'Chartologist,',
       firstParagraph: 'Chartologist is an advanced trading robot designed to optimize your trading strategy. Leveraging powerful machine learning algorithms, it continuously analyzes real-time market data to deliver precise buy or sell signals.',
       secondParagraph: 'Don\'t venture in the markets without the finest indicators. ' +
         'With the Help of Chartologist, equip like a pro—then trade like a machine.'

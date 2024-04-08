@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TradingBotPageComponent } from './trading-bot-page.component';
+import { AutomationPageComponent } from './automation-page.component';
 
 describe('TradingBotPageComponent', () => {
-  let component: TradingBotPageComponent;
-  let fixture: ComponentFixture<TradingBotPageComponent>;
+  let component: AutomationPageComponent;
+  let fixture: ComponentFixture<AutomationPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TradingBotPageComponent]
+      imports: [AutomationPageComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(TradingBotPageComponent);
+
+    fixture = TestBed.createComponent(AutomationPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

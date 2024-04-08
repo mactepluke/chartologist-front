@@ -143,17 +143,19 @@ span  {
   position: relative;
 }
 
+.app-title  {
+  font-family: "Source Code Pro", sans-serif;
+}
+
 @media (hover: hover) {
   .app-title {
-    font-size: 4rem;
-    font-family: Anta, sans-serif;
+    font-size: 3.5rem;
   }
 }
 
 @media (hover: none) {
   .app-title {
     font-size: 2rem;
-    font-family: Anta, sans-serif;
   }
 }
 

@@ -18,7 +18,7 @@ $chartomancer-front-accent: mat.define-palette(mat.$teal-palette, 600);
 $chartomancer-front-warn: mat.define-palette(mat.$red-palette, 900);
 
 $chartomancer-front-level: mat.define-typography-level(
-  $font-family: Roboto,
+  $font-family: Inter,
   $font-weight: 400,
   $font-size: 1rem,
   $line-height: 1,
@@ -57,6 +57,6 @@ $chartomancer-front-light-theme: mat.define-light-theme((
 
 
 .lightMode {
-  @include mat.all-component-themes($chartomancer-front-light-theme);
+  @include mat.all-component-colors($chartomancer-front-light-theme);
 }
 

@@ -39,8 +39,8 @@ export class PricingPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.dualTitle = {
-      smallBlackText: 'And catch the market before it moves.',
-      bigOrangeText: 'Choose your plan',
+      smallBlackTitle: 'And catch the market before it moves.',
+      bigColoredTitle: 'Choose your plan',
       firstParagraph: '',
       secondParagraph: '',
     };

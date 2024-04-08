@@ -10,7 +10,6 @@ mat-card {
 
 #firstItemName {
   font-size: 10px;
-  font-weight: lighter;
   margin-bottom: 10px;
 }
 
@@ -40,7 +39,6 @@ mat-card {
 
 .secondaryItemName {
   font-size: 14px;
-  font-weight: lighter;
 }
 
 .secondaryItemValue {

@@ -1,8 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatTab, MatTabGroup} from "@angular/material/tabs";
 import {AboutTabComponent} from "../about-tab/about-tab.component";
-import {FeaturesTabComponent} from "../features-tab/features-tab.component";
-import {DisclaimerTabComponent} from "../disclaimer-tab/disclaimer-tab.component";
 import {FaqPageComponent} from "../../faq/faq-page/faq-page.component";
 import {ContactPageComponent} from "../../contact/contact-page/contact-page.component";
 
@@ -13,8 +11,6 @@ import {ContactPageComponent} from "../../contact/contact-page/contact-page.comp
     MatTabGroup,
     MatTab,
     AboutTabComponent,
-    FeaturesTabComponent,
-    DisclaimerTabComponent,
     FaqPageComponent,
     ContactPageComponent
   ],

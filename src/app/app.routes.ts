@@ -13,14 +13,12 @@ export const routes: Routes = [
   {
     path: 'signals',
     title: 'Signals',
-    canActivate: [AuthGuard()],
     loadComponent: () => import('./signals/signals-page/signals-page.component').then(module => module.SignalsPageComponent)
   },
   {
-    path: 'trading-bot',
-    title: 'Trading Bot',
-    canActivate: [AuthGuard()],
-    loadComponent: () => import('./trading-bot/trading-bot-page/trading-bot-page.component').then(module => module.TradingBotPageComponent)
+    path: 'automation',
+    title: 'Automation',
+    loadComponent: () => import('./automation/automation-page/automation-page.component').then(module => module.AutomationPageComponent)
   },
   {
     path: 'pricing',

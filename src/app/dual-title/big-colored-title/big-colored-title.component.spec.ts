@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FeaturesTabComponent } from './features-tab.component';
+import { BigColoredTitleComponent } from './big-colored-title.component';
 
-describe('FeaturesTabComponent', () => {
-  let component: FeaturesTabComponent;
-  let fixture: ComponentFixture<FeaturesTabComponent>;
+describe('BigColoredTitleComponent', () => {
+  let component: BigColoredTitleComponent;
+  let fixture: ComponentFixture<BigColoredTitleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FeaturesTabComponent]
+      imports: [BigColoredTitleComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FeaturesTabComponent);
+    fixture = TestBed.createComponent(BigColoredTitleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

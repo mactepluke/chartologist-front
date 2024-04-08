@@ -34,8 +34,8 @@ export class FaqPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.dualTitle = {
-      smallBlackText: 'Frequently Asked',
-      bigOrangeText: 'Questions',
+      smallBlackTitle: 'Frequently Asked',
+      bigColoredTitle: 'Questions',
       firstParagraph: '',
       secondParagraph: '',
     };

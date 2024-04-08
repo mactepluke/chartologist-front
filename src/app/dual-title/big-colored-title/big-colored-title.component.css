@@ -1,0 +1,42 @@
+h1 {
+  margin-top: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+@media (hover: hover) {
+  .big {
+    font-size: 3.5rem;
+  }
+}
+
+@media (hover: none) {
+  .big {
+    font-size: 2.8rem;
+  }
+}
+
+@keyframes inverse-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.inverse-fade-one {
+  animation: inverse-fade 0.7s ease-in-out forwards;
+}
+
+.horizontal-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+div.icon-block {
+  margin-right: 40px;
+  margin-bottom: 40px;
+}
+

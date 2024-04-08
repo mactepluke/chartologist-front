@@ -50,8 +50,8 @@ export class PlanPurchaseComponent implements OnInit {
     this.selectedPlanFeatures = this.selectedPlan.features;
 
     this.dualTitle = {
-      smallBlackText: 'Complete your order and start using Chartologist today.',
-      bigOrangeText: '',
+      smallBlackTitle: 'Complete your order and start using Chartologist today.',
+      bigColoredTitle: '',
       firstParagraph: '',
       secondParagraph: '',
     };
