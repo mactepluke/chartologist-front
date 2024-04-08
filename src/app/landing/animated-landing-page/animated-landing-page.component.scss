@@ -198,7 +198,10 @@ h1  {
 .buttons {
   width: 300px;
   height: 60px;
+  z-index: 99;
+  opacity: 0.9;
 }
+
 
 .overlay {
   position: absolute;
